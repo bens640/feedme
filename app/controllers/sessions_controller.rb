@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if @user
       #logged in hooray
       session[:user_id] = @user.id
-      redirect_to notes_path
+      redirect_to root_path
     else
       render action: 'new'
     end
@@ -19,16 +19,12 @@ class SessionsController < ApplicationController
       find_by(email: params[:email]).
       try(:authenticate, params[:password])
 
-    if @user
+    if @chef
       #logged in hooray
       session[:user_id] = @user.id
-      redirect_to notes_path
+      redirect_to root_path
     else
       render action: 'new'
     end
   end
-
-
-
-
 end
