@@ -7,4 +7,10 @@ class User < ActiveRecord::Base
   validates :email_confirmation, presence: true
   validates :password_digest, confirmation: true
   validates :password_digest_confirmation, presence: true
+
+
+def index
+
+end
+
 end
