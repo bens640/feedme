@@ -1,0 +1,16 @@
+h1 create chef
+= simple_form_for @chef do |f| 
+    p
+      = f.label :email 
+      = f.text_field :email
+    p
+      = f.label :email_confirmation 
+      = f.text_field :email_confirmation
+    p
+      = f.label :password 
+      = f.password_field :password 
+    p
+      = f.label :password_confirmation 
+      = f.password_field :password_confirmation 
+    p
+      = f.submit 
