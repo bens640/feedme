@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current
 
   def current_user
-    @user_user ||= User.find_by(id: session[:user_id])
+    @current_user ||= User.find_by(id: session[:user_id])
   end
 
   def require_logged_in
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_chef
-    @user_chef ||= Chef.find_by(id: session[:chef_id])
+    @current_chef ||= Chef.find_by(id: session[:chef_id])
   end
 
   def require_logged_in
