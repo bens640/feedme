@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     else
       render action: 'new'
     end
+  end
 
     private
     def user_params
