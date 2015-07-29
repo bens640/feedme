@@ -1,16 +1,35 @@
-h1 create chef
-= simple_form_for @chef do |f| 
-    p
-      = f.label :email 
-      = f.text_field :email
-    p
-      = f.label :email_confirmation 
-      = f.text_field :email_confirmation
-    p
-      = f.label :password 
-      = f.password_field :password 
-    p
-      = f.label :password_confirmation 
-      = f.password_field :password_confirmation 
-    p
-      = f.submit 
+
+.row
+  .large-6.columns
+    .signup-panel
+      p.welcome New Chef
+      = simple_form_for @chef do |f|
+        form
+          .row.collapse
+            .small-2.columns
+              /span.prefix
+                /i.fi-torso-female
+            .small-10.columns
+              = f.input :email
+          .row.collapse
+            .small-2.columns
+              /span.prefix
+                /i.fi-mail
+            .small-10.columns
+              = f.input :email_confirmation
+          .row.collapse
+            .small-2.columns
+              /span.prefix
+                /i.fi-lock
+            .small-10.columns
+              = f.input :password
+          .row.collapse
+            .small-2.columns
+              /span.prefix
+                /i.fi-lock
+            .small-10.columns
+              = f.input :password_confirmation
+        a.button href="#"  Sign Up!
+        p
+          | Already have an account?
+          a href="#"  Login here &raquo

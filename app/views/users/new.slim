@@ -1,7 +1,36 @@
-h1 create User
-= simple_form_for @user do |f| 
-  = f.input :email
-  = f.input :email_confirmation
-  = f.input :password 
-  = f.input :password_confirmation 
-  = f.submit
+
+.row
+  .form-wrapper
+    .large-6.columns
+      .signup-panel
+        p.welcome New User
+        = simple_form_for @user do |f|
+          form
+            .row.collapse
+              .small-2.columns
+              /span.prefix
+                  /i.fi-torso-female
+              .small-10.columns
+                = f.input :email
+            .row.collapse
+              .small-2.columns
+              /span.prefix
+                  /i.fi-mail
+              .small-10.columns
+                = f.input :email_confirmation
+            .row.collapse
+              .small-2.columns
+              /span.prefix
+                  /i.fi-lock
+              .small-10.columns
+                = f.input :password
+            .row.collapse
+              .small-2.columns
+              /span.prefix
+                  /i.fi-lock
+              .small-10.columns
+                = f.input :password_confirmation
+          a.button href="#"  Sign Up!
+          p
+            | Already have an account?
+            a href="#"  Login here &raquo
