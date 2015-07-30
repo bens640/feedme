@@ -42,7 +42,7 @@ def get_date
   else
     days = 31
   end
-  day = rand(days)
+  day = rand(days + 1)
   Date.new(year, month, day)
 end
 def get_time
@@ -50,7 +50,6 @@ def get_time
   if t > 12
     part = 'pm'
     t -= 12
-
   else
     part = 'am'
   end
