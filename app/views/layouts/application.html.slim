@@ -1,11 +1,11 @@
 html
   head
-	  title Cookio
-	  meta name="keywords" content="template language"
-	  == stylesheet_link_tag    "application"
-	  == javascript_include_tag "vendor/modernizr"
-	  == javascript_include_tag "application", 'data-turbolinks-track' => true
-	  == csrf_meta_tags
+    title Cookio
+    meta name="keywords" content="template language"
+    == stylesheet_link_tag    "application"
+    == javascript_include_tag "vendor/modernizr"
+    == javascript_include_tag "application", 'data-turbolinks-track' => true
+    == csrf_meta_tags
 
       == render 'reservations/navbar'
 
@@ -14,7 +14,8 @@ html
 
 
 
-	    == yield
+      == yield
+
 
 
 
