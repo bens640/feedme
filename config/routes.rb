@@ -6,9 +6,10 @@ Rails.application.routes.draw do
 
   resources :users
   resources :chefs
+  resources :reservations
 
 
-  root 'reservations#index'
+  root 'users#index'
 
 
 
