@@ -9,19 +9,12 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
-  def require_logged_in
-    return true if current_user
-
-    redirect_to root_path
-    return false
-  end
-
   def current_chef
     @current_chef ||= Chef.find_by(id: session[:chef_id])
   end
 
   def require_logged_in
-    return true if current_chef
+    return true if current_chef || current_user
 
     redirect_to root_path
     return false
