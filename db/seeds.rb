@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # require 'bcrypt'
-
+require './db/zip_city'
 num_users = 100
 reservations = 25
 def get_diet
@@ -29,9 +29,6 @@ def get_allergies
   end
   allergies
 end
-def get_zip
-  [33101,33102,33107,33109,33110,33111,33112,33114,33116,33119,33121,33122,33124,33124].sample.to_s
-end
 def get_date
   year = 2015
   month = rand(2)+9
@@ -42,7 +39,7 @@ def get_date
   else
     days = 31
   end
-  day = rand(days + 1)
+  day = rand(days)+1
   Date.new(year, month, day)
 end
 def get_time
@@ -57,25 +54,27 @@ def get_time
   t + ':00' + part
 end
 (1..num_users).each do |n|
+  zipCity = zip_city
   u = User.create(first_name:Faker::Name.first_name,
                   last_name:Faker::Name.last_name,
                   email:"#{n}@email.com",
                   address: Faker::Address.street_address,
                   address2: Faker::Address.secondary_address,
-                  city: 'Miami',
+                  city: zipCity[1],
                   state: 'FL',
-                  zip: get_zip,
+                  zip: zipCity[0].to_s,
                   allergies: get_allergies,
                   diet_restrictions: get_diet,
                   password_digest:BCrypt::Password.create(n))
+  zipCity = zip_city
   c = Chef.create(first_name:Faker::Name.first_name,
                   last_name:Faker::Name.last_name,
                   email:"#{n}@email.com",
                   address: Faker::Address.street_address,
                   address2: Faker::Address.secondary_address,
-                  city: 'Miami',
+                  city: zipCity[1],
                   state: 'FL',
-                  zip: get_zip,
+                  zip: zipCity[0].to_s,
                   password_digest:BCrypt::Password.create(n))
 end
 (1..reservations).each do |n|
