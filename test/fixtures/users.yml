@@ -5,7 +5,16 @@
 # below each fixture, per the syntax in the comments below
 #
 one: {}
-# column: value
-#
+  first_name: Weston
+  last_name: Cooper
+  email: weston@westoncooper.com
+  password_digest: <%= BCrypt::Password.create("password") %>
+  address: 123 main st
+  address2: apt 123
+  city: Miami
+  state: FL
+  zip: 33132
+  diet_restrictions: <%= ["Gluten
+
 two: {}
-#  column: value
+  column: value

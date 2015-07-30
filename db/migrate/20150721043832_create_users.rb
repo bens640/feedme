@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :zip
       t.string :diet_restrictions
       t.string :allergies
+      t.string :phone
       t.timestamps null: false
     end
     create_table :chefs do |t|
@@ -24,6 +25,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.string :zip
+      t.string :phone
       t.timestamps null: false
     end
     create_table :reservations do |t|
