@@ -17,6 +17,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
+  def usersign
+
+  end
+
   def edit
   end
 
