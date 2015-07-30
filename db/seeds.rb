@@ -6,9 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # require 'bcrypt'
+include ActionView::Helpers
 require './db/zip_city'
-num_users = 100
-reservations = 25
+num_users = 600
+num_reservations = 30
+reservation_factor = num_users/num_reservations
 def get_diet
   diet = []
   r = rand(100)
@@ -60,18 +62,28 @@ def secondary_address(n)
     ""
   end
 end
+def get_phone(n)
+  number_to_phone(5551000000+n, area_code: true)
+end
+
 (1..num_users).each do |n|
   zipCity = zip_city
+  a = Faker::Address.street_address
+  a2 = secondary_address(n)
+  city = zipCity[1]
+  zip = zipCity[0].to_s
+  phone = get_phone(n)
   u = User.create(first_name:Faker::Name.first_name,
                   last_name:Faker::Name.last_name,
                   email:"#{n}@email.com",
-                  address: Faker::Address.street_address,
-                  address2: secondary_address(n),
-                  city: zipCity[1],
+                  address: a,
+                  address2: a2,
+                  city: city,
                   state: 'FL',
-                  zip: zipCity[0].to_s,
+                  zip: zip,
                   allergies: get_allergies,
                   diet_restrictions: get_diet,
+                  phone: phone,
                   password_digest:BCrypt::Password.create(n))
   zipCity = zip_city
   c = Chef.create(first_name:Faker::Name.first_name,
@@ -82,14 +94,22 @@ end
                   city: zipCity[1],
                   state: 'FL',
                   zip: zipCity[0].to_s,
+                  phone: get_phone(n+1000),
                   password_digest:BCrypt::Password.create(n))
-end
-(1..reservations).each do |n|
-  r = Reservation.create(user_id:rand(num_users)+1,
+  if n % reservation_factor == 0
+    r = Reservation.create(user_id:u.id,
                          details:Faker::Lorem.sentence,
                          date:get_date,
-                         time:get_time)
+                         time:get_time,
+                         address:a,
+                         address2:a2,
+                         city:city,
+                         state:'FL',
+                         zip:zip,
+                         phone:phone)
+  end
 end
+
 #   if (1..50) === n
 #     v = u.venues.create(name:Faker::Company.name,
 #                         info:Faker::Company.bs,

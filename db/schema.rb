@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150721043832) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
+    t.string   "phone"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
@@ -36,6 +37,12 @@ ActiveRecord::Schema.define(version: 20150721043832) do
     t.text     "details"
     t.date     "date"
     t.string   "time"
+    t.string   "address"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,7 +52,7 @@ ActiveRecord::Schema.define(version: 20150721043832) do
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",        null: false
-    t.string   "last_name"
+    t.string   "last_name",         null: false
     t.string   "email",             null: false
     t.string   "password_digest"
     t.string   "address"
@@ -55,6 +62,7 @@ ActiveRecord::Schema.define(version: 20150721043832) do
     t.string   "zip"
     t.string   "diet_restrictions"
     t.string   "allergies"
+    t.string   "phone"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
