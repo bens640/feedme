@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+
+  def index
+    @user = current_user
+  end
+
   def new
     @user = User.new
   end
@@ -10,6 +15,9 @@ class UsersController < ApplicationController
     else
       render action: 'new'
     end
+  end
+
+  def edit
   end
 
   private
