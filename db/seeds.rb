@@ -53,13 +53,20 @@ def get_time
   t = t.to_s
   t + ':00' + part
 end
+def secondary_address(n)
+  if (n % 3 == 0)
+    Faker::Address.secondary_address
+  else
+    ""
+  end
+end
 (1..num_users).each do |n|
   zipCity = zip_city
   u = User.create(first_name:Faker::Name.first_name,
                   last_name:Faker::Name.last_name,
                   email:"#{n}@email.com",
                   address: Faker::Address.street_address,
-                  address2: Faker::Address.secondary_address,
+                  address2: secondary_address(n),
                   city: zipCity[1],
                   state: 'FL',
                   zip: zipCity[0].to_s,
@@ -71,7 +78,7 @@ end
                   last_name:Faker::Name.last_name,
                   email:"#{n}@email.com",
                   address: Faker::Address.street_address,
-                  address2: Faker::Address.secondary_address,
+                  address2: secondary_address(n+1),
                   city: zipCity[1],
                   state: 'FL',
                   zip: zipCity[0].to_s,
