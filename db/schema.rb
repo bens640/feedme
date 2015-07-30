@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20150721043832) do
 
   create_table "chefs", force: :cascade do |t|
     t.string   "first_name",      null: false
-    t.string   "last_name",       null: false
+    t.string   "last_name"
     t.string   "email",           null: false
     t.string   "password_digest"
     t.string   "address"
@@ -33,15 +33,11 @@ ActiveRecord::Schema.define(version: 20150721043832) do
   create_table "reservations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "chef_id"
-    t.string   "price_estimate"
-    t.string   "price_quote"
     t.text     "details"
-    t.text     "description"
-    t.time     "start_time"
-    t.date     "end_date"
-    t.time     "end_time"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.date     "date"
+    t.string   "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "reservations", ["chef_id"], name: "index_reservations_on_chef_id", using: :btree
@@ -49,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150721043832) do
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",        null: false
-    t.string   "last_name",         null: false
+    t.string   "last_name"
     t.string   "email",             null: false
     t.string   "password_digest"
     t.string   "address"
