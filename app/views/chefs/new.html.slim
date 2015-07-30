@@ -6,26 +6,18 @@
       = simple_form_for @chef do |f|
         form
           .row.collapse
-            .small-2.columns
-
             .small-10.columns
               = f.input :email
           .row.collapse
-            .small-2.columns
             .small-10.columns
               = f.input :first_name
           .row.collapse
-            .small-2.columns
             .small-10.columns
               = f.input :last_name
           .row.collapse
-            .small-2.columns
-
             .small-10.columns
               = f.input :password
           .row.collapse
-            .small-2.columns
-
             .small-10.columns
               = f.input :password_confirmation
               = f.button :submit

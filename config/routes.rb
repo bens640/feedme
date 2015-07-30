@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+  get 'create_chef' => 'users/chefsign'
+  get 'create_user' => 'users/usersign'
+
+  post 'sessions/create_user'
 
   resources :users
   resources :chefs
+
+
   root 'reservations#index'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

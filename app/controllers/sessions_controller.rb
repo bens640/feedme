@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 
     if @chef
       #logged in hooray
-      session[:user_id] = @user.id
+      session[:chef_id] = @chef.id
       redirect_to root_path
     else
       render action: 'new'

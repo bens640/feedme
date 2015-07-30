@@ -6,15 +6,12 @@
 $background-color: #a69c92;
 $primary-color: dodgerblue;
 
-.row {
-  max-width: 100%;
-}
+
 .name{
   text-align: center;
 }
 .menu {
   background-color: $background-color;
-  padding: 1.5rem 3rem 0 1.5rem;
   height: auto;
   .inline-list {
 	text-align: center;
