@@ -20,3 +20,8 @@
 .body-wrapper{
     width: 100%;
 }
+
+
+span.error{
+    background: blue;
+}
