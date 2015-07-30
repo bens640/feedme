@@ -29,4 +29,9 @@ class SessionsController < ApplicationController
       render action: 'new'
     end
   end
+
+  def destroy
+    reset_session
+    redirect_to root_path, flash:{session: "You are logged out."}
+  end
 end
