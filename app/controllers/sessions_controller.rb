@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
     if @chef
       #logged in hooray
       session[:chef_id] = @chef.id
-      redirect_to root_path
+      redirect_to 'reservations/index'
     else
       render action: 'new'
     end
