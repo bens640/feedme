@@ -1,25 +1,11 @@
-<<<<<<< HEAD
-doctype html
-  html
-    head
-      title Slim Examples
-      meta name="keywords" content="template language"
-      meta name="author" content=author
-      == stylesheet_link_tag    "application"
-      == javascript_include_tag "vendor/modernizr"
-      == javascript_include_tag "application", 'data-turbolinks-track' => true
-      == csrf_meta_tags
-
-      == yield
-=======
 html
   head
-	  title Cookio
-	  meta name="keywords" content="template language"
-	  == stylesheet_link_tag    "application"
-	  == javascript_include_tag "vendor/modernizr"
-	  == javascript_include_tag "application", 'data-turbolinks-track' => true
-	  == csrf_meta_tags
+    title Cookio
+    meta name="keywords" content="template language"
+    == stylesheet_link_tag    "application"
+    == javascript_include_tag "vendor/modernizr"
+    == javascript_include_tag "application", 'data-turbolinks-track' => true
+    == csrf_meta_tags
 
       == render 'reservations/navbar'
 
@@ -28,8 +14,8 @@ html
 
 
 
-	    == yield
->>>>>>> 446b09131a913efa949365fde900ab804e268b66
+      == yield
+
 
 
 
