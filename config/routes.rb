@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'create_chef' => 'users/chefsign'
-  get 'create_user' => 'users/usersign'
+  get 'chefs/chefsign'
+  get 'users/usersign'
 
   post 'sessions/create_user'
   post 'sessions/create_chef'
