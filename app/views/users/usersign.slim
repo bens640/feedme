@@ -4,16 +4,16 @@
       .signup-panel
         p.welcome User Sign In
         = form_tag sessions_create_user_path do |f|
-        = password_field_tag(:password) %>
           form
             .row.collapse
               .small-10.columns
-                = f.title
-                = f.input :email
+                = label_tag :email
+                = text_field_tag :email
             .row.collapse
             .row.collapse
               .small-10.columns
-                = f.input :password
+                = label_tag :password
+                = password_field_tag :password
             .row.collapse
               .small-10.columns
-                = f.button :submit
+                = submit_tag 'Log in'

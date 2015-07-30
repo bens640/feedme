@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'create_user' => 'users/usersign'
 
   post 'sessions/create_user'
+  post 'sessions/create_chef'
 
   resources :users
   resources :chefs

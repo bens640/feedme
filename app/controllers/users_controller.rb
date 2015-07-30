@@ -18,15 +18,15 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @user = User.new
+    if @user.save
+      redirect_to root_path notice: 'Logged in'
+    else
+      render action: 'usersign'
+    end
   end
 
-  def usersign
 
-  end
-
-  def edit
-  end
 
   private
   def user_params

@@ -13,6 +13,15 @@ class ChefsController < ApplicationController
     end
   end
 
+  def show
+    @chef = Chef.new
+    if @chef.save
+      redirect_to root_path notice: 'Logged in'
+    else
+      render action: 'chefsign'
+    end
+  end
+
   private
   def chef_params
     params.
