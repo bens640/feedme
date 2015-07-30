@@ -9,8 +9,4 @@ class User < ActiveRecord::Base
   validates :password_digest_confirmation, presence: true
 
 
-def index
-
-end
-
 end
