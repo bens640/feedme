@@ -14,9 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_logged_in
-    return true if current_chef || current_user
-
+  unless (current_chef || current_user)
     redirect_to root_path
-    return false
   end
 end
