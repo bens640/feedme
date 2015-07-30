@@ -17,6 +17,6 @@ class ChefsController < ApplicationController
   def chef_params
     params.
     require(:chef).
-    permit(:email, :email_confirmation, :password, :password_confirmation)
+    permit(:email, :password,:first_name, :last_name, :password_confirmation)
   end
 end
