@@ -13,5 +13,4 @@ nav.menu
       == link_to 'User Login', users_usersign_path
 
     li
-      == if current_chef || current_user
-         == link_to 'Sign Out', logout_path
+      == link_to 'Sign Out', logout_path if current_chef || current_user
