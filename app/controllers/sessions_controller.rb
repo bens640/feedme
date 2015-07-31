@@ -1,22 +1,25 @@
 class SessionsController < ApplicationController
-  def new
+  before_action
+  def new_user
 
   end
-  def create_user
+  def new_chef
+
+  end
+  def login_user
     @user = User.
       find_by(email: params[:email]).
       try(:authenticate, params[:password])
 
     if @user
-      #logged in hooray
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to root_path, flash:{notice:"#{@user.first_name} you are logged in as a user"}
     else
-      render action: 'new'
+      render action: 'new', flash:{notice:"please try to login again"}
     end
   end
 
-  def create_chef
+  def login_chef
     @chef = Chef.
       find_by(email: params[:email]).
       try(:authenticate, params[:password])
@@ -24,14 +27,14 @@ class SessionsController < ApplicationController
     if @chef
       #logged in hooray
       session[:chef_id] = @chef.id
-      redirect_to 'reservations/index'
+      redirect_to root_path, flash:{notice:"#{@chef.first_name} you are logged in as a chef"}
     else
-      render action: 'new'
+      render action: 'new', flash:{notice:"please try to login again"}
     end
   end
 
   def destroy
     reset_session
-    redirect_to root_path, flash:{session: "You are logged out."}
+    redirect_to root_path, flash:{notice: "You are logged out."}
   end
 end

@@ -13,18 +13,18 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_path notice: 'created user'
     else
-      render action: 'new'
+      render action: 'new', notice:'please try again'
     end
   end
 
-  def show
-    @user = User.new
-    if @user.save
-      redirect_to root_path notice: 'Logged in'
-    else
-      render action: 'usersign'
-    end
-  end
+  # def show
+  #   @user = User.new
+  #   if @user.save
+  #     redirect_to root_path notice: 'Logged in'
+  #   else
+  #     render action: 'usersign'
+  #   end
+  # end
 
 
 

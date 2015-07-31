@@ -1,5 +1,7 @@
 nav.menu
   h1.name Cookio
+  span
+    = notice
   ul.inline-list
     li
       == link_to 'Home', root_path
@@ -8,9 +10,9 @@ nav.menu
     li
       == link_to 'New Chef', new_chef_path
     li
-      == link_to 'Chef Login', chefs_chefsign_path
+      == link_to 'Chef Login', login_chef_path
     li
-      == link_to 'User Login', users_usersign_path
+      == link_to 'User Login', login_user_path
 
     li
       == link_to 'Sign Out', logout_path if current_chef || current_user

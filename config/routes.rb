@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  get 'chefs/chefsign'
-  get 'users/usersign'
 
-  post 'sessions/create_user'
-  post 'sessions/create_chef'
+  get 'login_chef' => 'sessions#new_chef'
+  get 'login_user' => 'sessions#new_user'
+
+  post 'sessions/login_user'
+  post 'sessions/login_chef'
 
   resources :users
   resources :chefs
