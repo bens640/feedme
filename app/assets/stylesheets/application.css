@@ -15,19 +15,14 @@
  *= require_self
  */
 
-
-
-.body-wrapper{
-    width: 100%;
+/*Parralax**************************************************************************************************************/
+.name{
+    font-size:2em;
 }
-
 
 span.error{
     background: blue;
 }
-.name{
-    font-size:2em;
-}}
 
 body {
     font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
