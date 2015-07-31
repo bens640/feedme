@@ -3,7 +3,7 @@ html
     title Cookio
     meta name="keywords" content="template language"
     == stylesheet_link_tag    "application"
-    link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet" /
+    /link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet" /
     == javascript_include_tag "vendor/modernizr"
     == javascript_include_tag "application", 'data-turbolinks-track' => true
     == csrf_meta_tags
@@ -50,9 +50,9 @@ html
         ham hock frankfurter meatball cow brisket. Shankle sausage filet mignon
         biltong pork loin. Short ribs spare ribs chuck pig meatloaf shoulder
         cow tail brisket biltong ball tip ham hock.
-      .body-wrapper
-        == yield
+    .body-wrapper
+      == yield
 
-
+  ==render 'reservations/footer'
 
 
