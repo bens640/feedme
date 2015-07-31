@@ -1,0 +1,4 @@
+.reservation
+  = @reservation.user.first_name
+  .reserve
+    = link_to "reserve", @reservation, method: :put
