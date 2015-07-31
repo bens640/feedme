@@ -12,7 +12,10 @@ $primary-color: dodgerblue;
 }
 .menu {
   background-color: $background-color;
+  width: 100%;
   height: auto;
+  position: absolute;
+  top: 0;
   .inline-list {
 	text-align: center;
 	li {
