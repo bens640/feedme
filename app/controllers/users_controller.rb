@@ -1,9 +1,4 @@
 class UsersController < ApplicationController
-
-  def index
-    @user = current_user
-  end
-
   def new
     @user = User.new
   end
@@ -11,22 +6,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      redirect_to root_path notice: 'created user'
+      session[:user_id] = @user.id
+      redirect_to root_path , flash:{notice: 'created user and logged in'}
     else
-      render action: 'new', notice:'please try again'
+      render action: 'new', flash:{notice:'please try again'}
     end
   end
-
-  # def show
-  #   @user = User.new
-  #   if @user.save
-  #     redirect_to root_path notice: 'Logged in'
-  #   else
-  #     render action: 'usersign'
-  #   end
-  # end
-
-
 
   private
   def user_params

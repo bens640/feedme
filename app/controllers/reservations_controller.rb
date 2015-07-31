@@ -1,13 +1,15 @@
 class ReservationsController < ApplicationController
 
-
-
-	def index
-
+  def index
+    @reservations = Reservation.where(chef_id:nil)
+    @chef = Chef.find(session[:chef_id])
   end
 
   def new
     @reservation = Reservation.new
+  end
+  def show
+    @reservation = Reservation.find(params[:id])
   end
 
   def create
@@ -19,6 +21,12 @@ class ReservationsController < ApplicationController
       render action: 'new'
     end
   end
+  def update
+    reservation = Reservation.find(params.require(:id))
+    if reservation.update(chef_id:current_chef.id)
+      redirect_to root_path, flash:{notice:"Reservation Confirmed"}
+    end
+  end
 
   private
   def reservation_params
@@ -26,5 +34,4 @@ class ReservationsController < ApplicationController
         require(:reservation).
         permit(:details, :date, :time, :address, :address2, :city, :state, :zip, :phone)
   end
-
 end

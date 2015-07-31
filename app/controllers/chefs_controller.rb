@@ -5,22 +5,13 @@ class ChefsController < ApplicationController
 
   def create
     @chef = Chef.new chef_params
-
     if @chef.save
-      redirect_to 'reservations/index', notice: 'Created chef'
+      session[:chef_id] = @chef.id
+      redirect_to 'reservations#index', flash:{notice: 'Created chef and logged in'}
     else
-      render action: 'new', notice: 'Please try again'
+      render action: 'new', flash:{notice: 'Please try again'}
     end
   end
-
-  # def show
-  #   @chef = Chef.new
-  #   if @chef.save
-  #     redirect_to root_path notice: 'Logged in'
-  #   else
-  #     render action: 'chefsign'
-  #   end
-  # end
 
   private
   def chef_params

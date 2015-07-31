@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
     if @user
       session[:user_id] = @user.id
-      redirect_to root_path, flash:{notice:"#{@user.first_name} you are logged in as a user"}
+      redirect_to new_reservation_path, flash:{notice:"#{@user.first_name} you are logged in as a user"}
     else
       render action: 'new', flash:{notice:"please try to login again"}
     end
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
     if @chef
       #logged in hooray
       session[:chef_id] = @chef.id
-      redirect_to root_path, flash:{notice:"#{@chef.first_name} you are logged in as a chef"}
+      redirect_to reservations_path, flash:{notice:"#{@chef.first_name} you are logged in as a chef"}
     else
       render action: 'new', flash:{notice:"please try to login again"}
     end
