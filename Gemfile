@@ -38,6 +38,8 @@ gem 'simple_form'
 gem 'pg'
 gem 'foundation-rails'
 gem 'wirble'
+gem 'faker'
+
 group :production do
   gem 'rails_12factor'
 end
@@ -50,8 +52,6 @@ group :development, :test do
   gem 'byebug'
   gem 'better_errors'
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-  gem 'faker'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "minitest-rails"
   gem 'spring'
