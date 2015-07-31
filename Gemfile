@@ -41,6 +41,10 @@ gem 'wirble'
 group :production do
   gem 'rails_12factor'
 end
+
+group :test do
+    gem "minitest-rails-capybara"
+  end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -49,6 +53,9 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'faker'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem "minitest-rails"
   gem 'spring'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails', '~> 3.0'
 end
-
