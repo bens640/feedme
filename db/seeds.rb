@@ -71,7 +71,7 @@ end
   a = Faker::Address.street_address
   a2 = secondary_address(n)
   city = zipCity[1]
-  zip = zipCity[0].to_s
+  zip = zipCity[0]
   phone = get_phone(n)
   u = User.create(first_name:Faker::Name.first_name,
                   last_name:Faker::Name.last_name,
