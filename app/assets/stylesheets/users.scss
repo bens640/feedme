@@ -2,10 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//Color Variables
+$main-color: #00A8C6;
+$accent-color: #40C0CB;
+$neutral-color: #F9F2E7;
+$secondary-color: #AEE239;
+$secondary-accent: #8FBE00;
+
 .reservation{
   width: auto;
   padding: 2%;
   border: solid black 1px;
   float: left;
   margin: .5%;
+}
+.show-reservation{
+  width: auto;
+  padding: 2%;
+  border: solid black 1px;
+  float: left;
+  margin: 0 auto;
 }

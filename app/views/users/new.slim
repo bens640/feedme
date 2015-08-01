@@ -28,11 +28,11 @@
                 = f.input :phone, as: :tel
             .row.collapse
               .small-10.columns
-                = f.input :password         
+                = f.input :password
             .row.collapse
               .small-10.columns
                 = f.input :password_confirmation
                 = f.button :submit
             p
               | Already have an account?
-              a href="#"  Login here &raquo
+              == link_to "Login Here ", sessions_login_user_path

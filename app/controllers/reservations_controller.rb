@@ -4,13 +4,32 @@ class ReservationsController < ApplicationController
     @chef_reservations = Reservation.where(chef_id:current_chef.id)
     @available_reservations = Reservation.available
     @chef = Chef.find(session[:chef_id])
+
   end
+
+
 
   def new
     @reservation = Reservation.new
   end
   def show
     @reservation = Reservation.find(params[:id])
+  end
+
+  def current_reservation_user
+    @user_reservations = Reservation.where(user_id:current_user.id)
+  end
+
+  def current_reservation_chef
+    @chef_reservations = Reservation.where(chef_id:current_chef.id)
+  end
+
+  def my_reservations_user
+    @user_reservations = Reservation.where(user_id:current_user.id)
+  end
+
+  def my_reservations_chef
+    @chef_reservations = Reservation.where(chef_id:current_chef.id)
   end
 
   def create
@@ -28,6 +47,9 @@ class ReservationsController < ApplicationController
       redirect_to root_path, flash:{notice:"Reservation Confirmed"}
     end
   end
+
+
+
 
   private
   def reservation_params

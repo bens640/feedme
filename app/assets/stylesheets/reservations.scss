@@ -2,16 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-$background-color: #a69c92;
-$primary-color: dodgerblue;
+//Color Variables
+$main-color: #00A8C6;
+$accent-color: #40C0CB;
+$neutral-color: #F9F2E7;
+$secondary-color: #AEE239;
+$secondary-accent: #8FBE00;
 
 
 .name{
   text-align: center;
 }
 .menu {
-  background-color: $background-color;
+  background-color: $neutral-color;
   width: 100%;
   height: auto;
   position: relative;
@@ -24,10 +27,12 @@ $primary-color: dodgerblue;
 
 	}
 	a {
-	  color: #fff;
+	  color: $secondary-color;
 	  padding-bottom: 0.5rem;
+	  text-decoration: none;
+
 	  &:hover {
-		color: $primary-color;
+		color: $main-color;
 		transition: all .3s ease-in-out;
 	  }
 	}

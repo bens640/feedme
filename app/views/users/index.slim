@@ -1,1 +1,23 @@
-h2 landing page
+.index-photo
+  = image_tag('http://i.huffpost.com/gen/1475945/images/o-COOKING-AT-HOME-facebook.jpg')
+p
+  |Gastropub whatever blog 90's, four loko McSweeney's ugh church-key. Synth Austin fashion axe, Bushwick gastropub
+  |cronut paleo brunch Portland viral chillwave Neutra. Food truck PBR&B 90's, cred Shoreditch dreamcatcher Bushwick
+  |keffiyeh. Tofu aesthetic Brooklyn flexitarian drinking vinegar. Meggings flexitarian pop-up YOLO, butcher trust
+  |fund 90's bicycle rights next level. Etsy meditation brunch yr, direct trade sartorial sriracha master cleanse.
+  |Pop-up church-key viral chambray YOLO aesthetic, pickled lomo.
+  |Pork belly single-origin coffee hella, post-ironic roof party 3 wolf moon try-hard taxidermy before they sold out
+  |fingerstache sriracha Carles hashtag crucifix viral. Bitters fashion axe Vice ugh. Ugh 8-bit fap, skateboard
+  |freegan bespoke before they sold out tousled blog wolf ethical hella master cleanse. Flexitarian post-ironic
+  |kitsch, blog twee next level migas swag artisan deep v food truck beard before they sold out slow-carb. Leggings
+  |cold-pressed food truck, try-hard ennui gentrify disrupt salvia ethical cronut four loko literally. Kale chips
+  |fixie Austin bespoke. Salvia crucifix try-hard,
+  |plaid gluten-free synth Banksy typewriter distillery literally pork belly Intelligentsia Williamsburg wayfarers
+  |chillwave.
+.become-a-chef
+  p Become a Chef! #{link_to 'Click Here', new_chef_path}
+.make-a-reservation
+  - if current_user
+    = link_to 'Make a Reservation', new_reservation_path
+  - else
+    = link_to 'Make a Reservation', new_user_path
