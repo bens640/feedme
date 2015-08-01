@@ -1,4 +1,11 @@
 .reservation
-  = @reservation.user.first_name
+  h3 User: #{@reservation.user.first_name}
+  h3 Date: #{@reservation.date}
+  h3 Time: #{@reservation.time}
+  h3 Details:
+  = @reservation.details
+  = simple_form_for @reservation do |f|
+    = f.input :details
+  br /
   .reserve
     = link_to "reserve", @reservation, method: :put

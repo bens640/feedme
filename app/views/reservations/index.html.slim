@@ -4,7 +4,12 @@ h1 Show available reservations
 
 - @reservations.each do |reservation|
   = div_for(reservation, class: 'reservation') do
-    = reservation.user.first_name
+
+    h3 User: #{reservation.user.first_name}
+    h3 Date: #{reservation.date}
+    h3 Time: #{reservation.time}
+    h3 Details:
+    = reservation.details
     br /
     = link_to "show", reservation
 
