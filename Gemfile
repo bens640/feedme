@@ -56,5 +56,6 @@ group :development, :test do
   gem 'spring'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
+  # gem 'rspec-capybara-simple_form-rails'
   gem 'rspec-rails', '~> 3.0'
 end
