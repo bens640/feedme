@@ -1,9 +1,7 @@
 h1 Show available reservations
-- @reservations.each do |reservation|
-  = content_tag(:div, reservation.user.first_name)
-  = link_to "show", reservation
-  br /
-  br /
+
+
+= render_module @reservations, :label => "ReservationLabel", template: "SmallTemplate"
   /== flash.each do |name, msg|
   /  = content_tag(:div, msg, class: name)
 

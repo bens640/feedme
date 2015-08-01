@@ -42,5 +42,13 @@ class CreateUsers < ActiveRecord::Migration
       t.string :phone
       t.timestamps null: false
     end
+    create_table :messages do |t|
+        t.belongs_to :user, index: true
+        t.belongs_to :chef, index: true
+        t.belongs_to :reservation, index: true, null:false
+        t.string :subject, null:false
+        t.text :message, null:false
+        t.timestamps null: false
+    end
   end
 end

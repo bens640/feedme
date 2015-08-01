@@ -8,7 +8,7 @@
 # require 'bcrypt'
 include ActionView::Helpers
 require './db/zip_city'
-num_users = 600
+num_users = 100
 num_reservations = 30
 reservation_factor = num_users/num_reservations
 def get_diet
@@ -107,6 +107,21 @@ end
                          state:'FL',
                          zip:zip,
                          phone:phone)
+    num_m = rand(4)
+    r.chef_id = c.id
+    num_m.times do |i|
+      if i % 2 == 0
+        m = Message.create(chef_id:c.id,
+                        reservation_id:r.id,
+                        subject:Faker::Lorem.sentence,
+                        message:Faker::Lorem.sentence(45))
+      else
+        m = Message.create(user_id:u.id,
+                           reservation_id:r.id,
+                           subject:Faker::Lorem.sentence,
+                           message:Faker::Lorem.sentence(45))
+      end
+    end
   end
 end
 

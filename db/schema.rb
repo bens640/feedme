@@ -31,6 +31,20 @@ ActiveRecord::Schema.define(version: 20150721043832) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "chef_id"
+    t.integer  "reservation_id", null: false
+    t.string   "subject",        null: false
+    t.text     "message",        null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "messages", ["chef_id"], name: "index_messages_on_chef_id", using: :btree
+  add_index "messages", ["reservation_id"], name: "index_messages_on_reservation_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+
   create_table "reservations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "chef_id"

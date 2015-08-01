@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
-
+  include ApplicationHelper
   def index
-    @reservations = Reservation.where(chef_id:nil)
+    @reservations = Reservation.info
     @chef = Chef.find(session[:chef_id])
   end
 
