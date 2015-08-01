@@ -6,6 +6,13 @@ Rails.application.routes.draw do
   post 'sessions/login_user'
   post 'sessions/login_chef'
 
+
+  get 'chefs/chef_account'
+  get 'users/user_account'
+  get 'users/my_reservations_user'
+  get 'chefs/my_reservations_chef'
+
+
   resources :users
   resources :chefs
   resources :reservations

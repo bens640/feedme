@@ -16,6 +16,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def user_account
+    @user = current_user
+    @user_reservations = Reservation.where(user_id:current_user.id)
+  end
+
+  def my_reservations_user
+    @user = current_user
+    @user_reservations = Reservation.where(user_id:current_user.id)
+  end
+
   private
   def user_params
     params.

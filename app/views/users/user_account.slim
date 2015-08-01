@@ -1,5 +1,5 @@
 h1 My Account
 h2 User
-
-= render 'users/profileuser'
-= render 'reservations/current_reservations'
+= link_to 'New Reservation', new_reservation_path
+= render 'profileuser'
+= render 'reservations/current_reservations_user'

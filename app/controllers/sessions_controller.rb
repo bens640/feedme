@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to new_reservation_path, flash:{notice:"#{@user.first_name} you are logged in as a user"}
     else
-      render action: 'new', flash:{notice:"please try to login again"}
+      redirect_to login_user_path, flash:{notice:"please try to login again"}
     end
   end
 

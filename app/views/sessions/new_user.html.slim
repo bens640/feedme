@@ -17,4 +17,7 @@
             .row.collapse
               .small-10.columns
                 = submit_tag 'Log in'
-= link_to 'Sign up', new_user_path
+            p
+              | Don't have an account?
+              == link_to "Sign Up Here ", new_user_path
+
