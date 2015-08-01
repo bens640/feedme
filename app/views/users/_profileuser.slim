@@ -1,0 +1,34 @@
+.row
+  .form-wrapper
+    .large-6.columns
+      .signup-panel
+        = simple_form_for @user do |f|
+          form
+            .row.collapse
+              .small-10.columns
+                = f.input :email
+            .row.collapse
+              .small-10.columns
+                = f.input :first_name
+            .row.collapse
+              .small-10.columns
+                = f.input :last_name
+            .row.collapse
+              .small-10.columns
+                = f.input :city
+            .row.collapse
+              .small-10.columns
+                = f.input :state
+            .row.collapse
+              .small-10.columns
+                = f.input :zip
+            .row.collapse
+              .small-10.columns
+                = f.input :phone, as: :tel
+            .row.collapse
+              .small-10.columns
+                = f.input :password
+            .row.collapse
+              .small-10.columns
+                = f.input :password_confirmation
+                = f.button :submit

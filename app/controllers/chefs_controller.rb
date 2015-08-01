@@ -14,6 +14,16 @@ class ChefsController < ApplicationController
     end
   end
 
+  def chef_account
+    @chef = current_chef
+    @chef_reservations = Reservation.where(chef_id:current_chef.id)
+  end
+
+  def my_reservations_chef
+    @chef_reservations = Reservation.where(chef_id:current_chef.id)
+  end
+
+
   private
   def chef_params
     params.
