@@ -36,7 +36,6 @@ gem 'slim-rails'
 # gem 'haml'
 gem 'simple_form'
 gem 'pg'
-gem 'foundation-rails'
 gem 'wirble'
 group :production do
   gem 'rails_12factor'
