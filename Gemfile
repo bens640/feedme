@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
+gem "binding_of_caller"
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -37,19 +37,24 @@ gem 'slim-rails'
 gem 'simple_form'
 gem 'pg'
 gem 'wirble'
+gem 'faker'
+
 group :production do
   gem 'rails_12factor'
+end
+
+group :test do
+    gem "minitest-rails-capybara"
 end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'better_errors'
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-  gem 'faker'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem "minitest-rails"
   gem 'spring'
-  gem 'rspec-rails', '~> 3.0'
-  gem 'capybara'
+  gem 'shoulda-matchers'
   gem 'factory_girl_rails'
+  gem 'rspec-rails', '~> 3.0'
 end
