@@ -124,36 +124,3 @@ end
     end
   end
 end
-
-#   if (1..50) === n
-#     v = u.venues.create(name:Faker::Company.name,
-#                         info:Faker::Company.bs,
-#                         address:Faker::Address.street_address,
-#                         city:Faker::Address.city,
-#                         state:Faker::Address.state,
-#                         zip:Faker::Address.zip,
-#                         country:"United States")
-#     20.times do
-#       e = u.events.create(venue_id:v.id,
-#                           name:Faker::Commerce.product_name,
-#                           description:Faker::Lorem.sentence(50),
-#                           created_at:Faker::Time.between(DateTime.now - 2, DateTime.now - 1))
-#       tempevents << e.id
-#       at = Attendance.where(user_id:u.id).where(event_id:e.id).take
-#       at.admin = true
-#       at.save
-#       attendances << [e.id,u.id]
-#     end
-#   end
-# end
-#
-# 10000.times do
-#   e = tempevents.sample
-#   u = tempusers.sample
-#   unless attendances.include?([e,u])
-#     Attendance.create(event_id:e,user_id:u)
-#     attendances << [e,u]
-#   else
-#     redo
-#   end
-# end
