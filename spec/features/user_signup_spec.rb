@@ -1,19 +1,22 @@
 require 'rails_helper.rb'
 
-feature 'Creating posts' do
-  scenario 'can create a job' do
-    # visit the root route
-    visit '/'
-    # click on a button to create a new post
-    click_link 'New Post'
+feature 'Creating User' do
+  scenario 'User signs up' do
+    # visit the User sign up
+    visit '/users/new'
     # fill out the bits of the form that we need.
-    attach_file('Image', "spec/files/images/coffee.jpg")
-    fill_in 'Caption', with: 'nom nom nom #coffeetime'
-    # click the submit button
-    click_button 'Create Post'
-    # expect the page that we're sent to have a specific text
-    expect(page).to have_content('#coffeetime')
-    # expect the page to contain our photo.
-    expect(page).to have_css("img[src*='coffee.jpg']")
-  end
+     fill_in 'Email', with: 'sean@cookio.com'
+     fill_in 'First name', with: 'sean'
+     fill_in 'Last name', with: 'hendricks'
+     fill_in 'City', with: 'blah'
+     fill_in 'State', with: 'blah'
+     fill_in 'Zip', with: '33176'
+     fill_in 'Phone', with: '555-555-555'
+     fill_in 'Password', with: 'secret1'
+     fill_in 'Password confirmation', with: 'secret1'
+     #created us click the submit button
+     click_button 'Create User'
+     # expect the page that we're sent to have a specific text
+     expect(page).to have_content('created user and logged in')
+   end
 end

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
-      UserMailer.welcome_email(@user).deliver
+      # UserMailer.welcome_email(@user).deliver
       redirect_to root_path , flash:{notice: 'created user and logged in'}
     else
       render action: 'new', flash:{notice:'please try again'}
