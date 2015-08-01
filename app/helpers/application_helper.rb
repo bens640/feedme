@@ -1,4 +1,5 @@
 module ApplicationHelper
+  # render_module @reservations, :label => "ReservationLabel", template: "SmallTemplate"
   def render_module(*args)
     options = args.extract_options!
 

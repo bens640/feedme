@@ -8,5 +8,9 @@ html
     == javascript_include_tag "application", 'data-turbolinks-track' => true
     == csrf_meta_tags
     == render 'users/navbar'
-    == yield
+    .body-wrapper
+      == yield
+
+
+
 

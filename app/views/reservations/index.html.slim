@@ -1,11 +1,23 @@
+- if @chef_reservations.count > 0
+  h1 My Reservations
+  - @chef_reservations.each do |reservation|
+    = div_for(reservation, class: 'my_reservation') do
+      h3 User: #{reservation.user.first_name}
+      h3 Date: #{reservation.date}
+      h3 Time: #{reservation.time}
+      h3 Details:
+      = reservation.details
+      br /
+      = link_to "show", reservation
 h1 Show available reservations
+- @available_reservations.each do |reservation|
+  = div_for(reservation, class: 'available_reservations') do
+    h3 User: #{reservation.user.first_name}
+    h3 Date: #{reservation.date}
+    h3 Time: #{reservation.time}
+    h3 Details:
+    = reservation.details
+    br /
+    = link_to "show", reservation
 
 
-= render_module @reservations, :label => "ReservationLabel", template: "SmallTemplate"
-  /== flash.each do |name, msg|
-  /  = content_tag(:div, msg, class: name)
-
-    arr = ['a','b','c']
-    content_tag :div do
-      arr.collect { |letter| content_tag(:scan, letter)
-    end
