@@ -43,9 +43,7 @@ group :production do
   gem 'rails_12factor'
 end
 
-group :test do
 
-end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -58,4 +56,5 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
+  gem 'capybara-screenshot'
 end
