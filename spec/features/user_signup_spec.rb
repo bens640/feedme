@@ -19,6 +19,7 @@ feature 'Creating User' do
     fill_in 'Password confirmation', with: 'secret1'
     #created us click the submit button
     click_button 'Create User'
+    byebug
     # expect the page that we're sent to have a specific text
      expect(page).to have_content('created user and logged in')
    end
