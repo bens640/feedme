@@ -48,7 +48,11 @@ class ReservationsController < ApplicationController
     end
   end
 
-
+  def delete
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+    redirect_to root_path, flash:{notice:"Reservation Removed"}
+  end
 
 
   private

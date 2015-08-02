@@ -8,4 +8,8 @@
     = f.input :details
   br /
   .reserve
-    = link_to "reserve", @reservation, method: :put
+    = if current_chef
+      = link_to "reserve", @reservation, method: :put
+    /= else
+    /  = link_to "Remove Reservation", @reservations, method: :delete, data: {confirm: "Are you sure you want to
+    /    |remove this reservation?" }

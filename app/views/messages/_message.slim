@@ -1,0 +1,5 @@
+=@current_messages.each do |message|
+  .user-name
+    = message.user_id.first_name
+    .comment-content
+      = message.message

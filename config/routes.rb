@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'messages/new'
+
   get 'login_chef' => 'sessions#new_chef'
   get 'login_user' => 'sessions#new_user'
 
@@ -15,7 +17,9 @@ Rails.application.routes.draw do
 
   resources :users
   resources :chefs
-  resources :reservations
+  resources :reservations do
+    resources :messages
+  end
 
 
   root 'users#index'
