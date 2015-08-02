@@ -50,6 +50,7 @@ class ReservationsController < ApplicationController
 
   def destroy
     @reservation = Reservation.find(params[:id])
+    Message.where(reservation_id:@reservation.id)
     @reservation.destroy
     redirect_to root_path, flash:{notice:"Reservation Removed"}
   end
