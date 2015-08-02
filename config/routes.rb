@@ -17,7 +17,9 @@ Rails.application.routes.draw do
 
   resources :users
   resources :chefs
-  resources :reservations
+  resources :reservations do
+    resources :messages
+  end
 
   post 'reservations/show'
 

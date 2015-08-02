@@ -15,9 +15,9 @@ class ReservationsController < ApplicationController
   def show
     @reservation = Reservation.find(params[:id])
     @messages = Message.where(reservation_id: params[:id])
-    r = Reservation.find(params[:id])
-    @user = r.user
-    @chef = r.chef
+    @r = Reservation.find(params[:id])
+    @user = @r.user
+    @chef = @r.chef
     @new_reservations_message = Message.new
   end
 

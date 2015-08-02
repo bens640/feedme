@@ -4,18 +4,14 @@
   h3 Time: #{@reservation.time}
   h3 Details:
   = @reservation.details
-  = simple_form_for @reservation do |f|
-    = f.input :details
+
   br /
   .reserve
-    = if current_chef
-      = link_to "reserve", @reservation, method: :put
-    /= else
-    /  = link_to "Remove Reservation", @reservations, method: :delete, data: {confirm: "Are you sure you want to
-    /    |remove this reservation?" }
-    = render 'message'
+    - if current_chef && !@reservation.chef_id
+      = link_to "reserve", @reservation, method: :post
+
     = simple_form_for ([@reservation, @new_reservations_message]) do |f|
       = f.input :subject
       = f.input :message
       = f.submit
-    /= render 'new_message'    /    |remove this reservation?" }
+

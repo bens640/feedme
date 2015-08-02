@@ -2,7 +2,7 @@ class Reservation < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :chef
-  has_many :messages
+  has_many :messages, dependent: :destroy
   def self.info
     Hash[*Reservation.available.all.map{|b| [b.user.first_name, b.user.city]}.flatten]
   end
