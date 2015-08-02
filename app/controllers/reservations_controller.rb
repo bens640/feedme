@@ -14,10 +14,16 @@ class ReservationsController < ApplicationController
   end
   def show
     @reservation = Reservation.find(params[:id])
+    @messages = Message.where(reservation_id: params[:id])
+    r = Reservation.find(params[:id])
+    @user = r.user
+    @chef = r.chef
+    @new_reservations_message = Message.new
   end
 
   def current_reservation_user
     @user_reservations = Reservation.where(user_id:current_user.id)
+
   end
 
   def current_reservation_chef
@@ -26,6 +32,7 @@ class ReservationsController < ApplicationController
 
   def my_reservations_user
     @user_reservations = Reservation.where(user_id:current_user.id)
+
   end
 
   def my_reservations_chef

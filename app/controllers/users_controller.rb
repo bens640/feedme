@@ -24,6 +24,9 @@ class UsersController < ApplicationController
   def my_reservations_user
     @user = current_user
     @user_reservations = Reservation.where(user_id:current_user.id)
+    @current_messages = Message.where(reservation_id:(params[:id]))
+
+
   end
 
   private

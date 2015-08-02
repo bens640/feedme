@@ -1,0 +1,9 @@
+- @messages.each do |message|
+
+  = message.chef_id ? @chef.first_name : @user.first_name
+  br/
+  = message.subject
+  br/
+  = message.message
+  br/
+  br/
