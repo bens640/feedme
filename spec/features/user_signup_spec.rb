@@ -3,7 +3,10 @@ require 'rails_helper.rb'
 feature 'Creating User' do
   scenario 'User signs up' do
     # visit the User sign up
-    visit '/users/new'
+    visit '/'
+    puts page.body
+    click_link 'New User'
+    expect(page).to have_content('New User')
     # fill out the bits of the form that we need.
      fill_in 'Email', with: 'sean@cookio.com'
      fill_in 'First name', with: 'sean'
