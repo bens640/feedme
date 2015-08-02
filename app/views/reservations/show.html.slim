@@ -7,8 +7,9 @@
 
   br /
   .reserve
-    - if current_chef && !@reservation.chef_id
+    - if current_chef && @reservation.chef_id
       = link_to "reserve", @reservation, method: :post
+    = render 'reservations/message'
 
     = simple_form_for ([@reservation, @new_reservations_message]) do |f|
       = f.input :subject
