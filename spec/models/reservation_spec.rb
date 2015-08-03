@@ -7,7 +7,11 @@ describe Reservation do
     chef = create(:chef)
     reservations = []
     (1..5).each do |i|
-      reservations << create(:reservation, id:i, date: i.days.from_now, chef_id: chef.id)
+      reservations << create(:reservation, id:i,
+                             date: Faker::Date.between(30.days.from_now, 35.days.from_now),
+                             chef_id: chef.id)
+      reservations.sort_by! &:date
+      reservations.reverse!
     end
     result = Reservation.chef(chef.id)
     expect(result).to eq(reservations)
@@ -16,7 +20,9 @@ describe Reservation do
     # chef = create(:chef)
     reservations = []
     (1..5).each do |i|
-      reservations << create(:reservation, id:i, date: i.days.from_now, chef_id: nil)
+      reservations << FactoryGirl.create(:reservation, id:i,
+                                         date: i.days.from_now,
+                                         chef_id: nil)
     end
     result = Reservation.available
     expect(result).to eq(reservations)

@@ -41,39 +41,39 @@ nav.menu
             == link_to 'Sign Out', logout_path
 
 
-
-  ul.inline-list
-    li
-      == link_to 'Home', root_path
-    -unless current_chef || current_user
-      li.active
-        == link_to 'New User', new_user_path
-    -if current_user
-      li
-        == link_to 'New Reservation', reservations_new_path
-      li
-        == link_to 'My Reservations', users_my_reservations_user_path
-
-    -unless current_chef || current_user
-      li
-        == link_to 'New Chef', new_chef_path
-    -unless current_chef || current_user
-      li
-        == link_to 'Chef Login', login_chef_path
-    -unless current_chef || current_user
-      li
-        == link_to 'User Login', login_user_path
-    -if current_chef
-      li
-        == link_to 'Reservations', reservations_path
-    -if current_chef || current_user
-      - if current_user
-        li
-          == link_to 'My Account', users_user_account_path
-      - else
-        li
-          == link_to 'My Account', chefs_chef_account_path
-      li
-        == link_to 'Sign Out', logout_path
+  /
+  /ul.inline-list
+  /  li
+  /    == link_to 'Home', root_path
+  /  -unless current_chef || current_user
+  /    li.active
+  /      == link_to 'New User', new_user_path
+  /  -if current_user
+  /    li
+  /      == link_to 'New Reservation', reservations_new_path
+  /    li
+  /      == link_to 'My Reservations', users_my_reservations_user_path
+  /
+  /  -unless current_chef || current_user
+  /    li
+  /      == link_to 'New Chef', new_chef_path
+  /  -unless current_chef || current_user
+  /    li
+  /      == link_to 'Chef Login', login_chef_path
+  /  -unless current_chef || current_user
+  /    li
+  /      == link_to 'User Login', login_user_path
+  /  -if current_chef
+  /    li
+  /      == link_to 'Reservations', reservations_path
+  /  -if current_chef || current_user
+  /    - if current_user
+  /      li
+  /        == link_to 'My Account', users_user_account_path
+  /    - else
+  /      li
+  /        == link_to 'My Account', chefs_chef_account_path
+  /    li
+  /      == link_to 'Sign Out', logout_path
 span
   = notice
