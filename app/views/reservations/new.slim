@@ -4,32 +4,31 @@
       .signup-panel
         p.welcome New Reservation
         = simple_form_for @reservation do |f|
-          form
-            .row.collapse
-              .small-10.columns
-                = f.input :details
-            .row.collapse
-              .small-10.columns
-                = f.input :date
-            .row.collapse
-              .small-10.columns
-                  = f.select :time, options_for_select(Reservation::LIST_TIME)
-            .row.collapse
-              .small-10.columns
-                = f.input :address
-            .row.collapse
-              .small-10.columns
-                = f.input :address2
-            .row.collapse
-              .small-10.columns
-                = f.input :city
-            .row.collapse
-              .small-10.columns
-                = f.input :state
-            .row.collapse
-              .small-10.columns
-                = f.input :zip
-            .row.collapse
-              .small-10.columns
-                = f.input :phone
-                = f.button :submit
+          .row.collapse
+            .small-10.columns
+              = f.input :details
+          .row.collapse
+            .small-10.columns
+              = f.input :date
+          .row.collapse
+            .small-10.columns
+                = f.select :time, options_for_select(Reservation::LIST_TIME)
+          .row.collapse
+            .small-10.columns
+              = f.input :address
+          .row.collapse
+            .small-10.columns
+              = f.input :address2
+          .row.collapse
+            .small-10.columns
+              = f.input :city
+          .row.collapse
+            .small-10.columns
+              = f.input :state
+          .row.collapse
+            .small-10.columns
+              = f.input :zip
+          .row.collapse
+            .small-10.columns
+              = f.input :phone
+              = f.button :submit
