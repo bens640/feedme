@@ -15,6 +15,10 @@ $secondary-accent: #8FBE00;
   border: solid black 1px;
   float: left;
   margin: .5%;
+  @media (max-width: 800px) {
+	background-color: #00A8C6;
+	width: 2%;
+  }
 }
 .show-reservation{
   width: auto;
@@ -36,65 +40,4 @@ $secondary-accent: #8FBE00;
   width: 100%;
   border: solid;
   display: inline-block;
-}
-//////////////////////////////////////////////////////////////////////
-@import url(http://fonts.googleapis.com/css?family=Philosopher:400,700,400italic);
-
-
-
-.sidebar {
-  height: 70px;
-  width: 70px;
-  background-color: #525252;
-  #hamburger {
-	width: 35px;
-	cursor: pointer;
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 25px;
-	div {
-	  width: 100%;
-	  height: 4px;
-	  background-color: white;
-	  margin-bottom: 4px;
-	  transition: all 0.2s ease-in-out;
-	}
-  }
-}
-.opacity {
-  opacity: 1;
-}
-.transform {
-  /* transform: translateX(30px);
-  transform: translateY();*/
-  transform: rotate(90deg);
-}
-section {
-  ul {
-	width: 300px;
-	opacity: 0;
-	transition: all 0.2s ease-in-out;
-
-	li {
-	  font-family: 'Philosopher', sans-serif;
-	  font-size: 1.4em;
-	  list-style: none;
-	  color: white;
-	  cursor: pointer;
-	  background-color: #525252;
-	  padding: 8px 10px;
-	  a{
-		text-decoration: none;
-	  }
-	  a:visited{
-		color: white;
-	  }
-	  &:hover {
-		background-color: darken(#525252, 8%);
-		text-decoration: none;
-
-
-	  }
-	}
-  }
 }

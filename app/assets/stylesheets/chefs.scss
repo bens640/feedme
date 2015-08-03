@@ -14,13 +14,18 @@ $secondary-accent: #8FBE00;
 .form-wrapper{
 margin: 0 auto;
 }
-
+@media only screen and (max-device-width: 480px){
+  .signup-panel {
+	background-color: #730E15;
+  }
+}
 .signup-panel{
   border-radius: 5px;
   border: 1px solid #ccc;
   padding: 15px;
   padding-right: 50px;
-  margin: 30px auto 0 auto;
+  margin: 30px auto;
+
 
   form{
 	input, span{
@@ -46,4 +51,5 @@ margin: 0 auto;
 .large-6.columns{
   margin-top: 100px;
 }
+
 

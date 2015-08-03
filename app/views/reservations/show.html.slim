@@ -7,13 +7,10 @@
 
   br /
   .reserve
-    - if @reservation.chef_id != current_chef.id && current_chef
-
+    - if current_chef && @reservation.chef_id != current_chef.id
       = link_to "reserve", @reservation, method: :patch
+
     = render 'reservations/message'
 
-    = simple_form_for ([@reservation, @new_reservations_message]) do |f|
-      = f.input :subject
-      = f.input :message
-      = f.submit
+
 
