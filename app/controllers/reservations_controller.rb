@@ -31,12 +31,11 @@ class ReservationsController < ApplicationController
 
   def my_reservations_user
     @user_reservations = Reservation.where(user_id:current_user.id)
-
   end
 
-  def my_reservations_chef
-    @chef_reservations = Reservation.where(chef_id:current_chef.id)
-  end
+  # def my_reservations_chef
+  #   @chef_reservations = Reservation.where(chef_id:current_chef.id)
+  # end
 
   def create
     @reservation = current_user.reservations.new reservation_params

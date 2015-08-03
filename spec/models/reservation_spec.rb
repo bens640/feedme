@@ -6,15 +6,14 @@ describe Reservation do
   it 'returns all of current chefs reservations by most recent' do
     chef = create(:chef)
     reservations = []
-    (1..5).each do |i|
+    (5..1).each do |i|
       reservations << create(:reservation, id:i,
-                             date: Faker::Date.between(30.days.from_now, 35.days.from_now),
+                             date: i.days.from_now,
                              chef_id: chef.id)
       reservations.sort_by! &:date
-      reservations.reverse!
     end
     result = Reservation.chef(chef.id)
-    expect(result).to eq(reservations)
+    expect(reservations).to eq(result)
   end
   it 'returns all of the reservations that are available' do
     # chef = create(:chef)

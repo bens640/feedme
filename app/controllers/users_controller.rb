@@ -6,16 +6,12 @@ class UsersController < ApplicationController
     @page_current = true
   end
   def create
-    puts "in CREATE action"
-    p params
     @user = User.new user_params
-    p @user
     if @user.save
       session[:user_id] = @user.id
       # UserMailer.welcome_email(@user).deliver
       redirect_to root_path , flash:{notice: 'created user and logged in'}
     else
-      p @user.errors.messages
       render action: 'new', flash:{notice:'please try again'}
     end
   end
@@ -29,7 +25,6 @@ class UsersController < ApplicationController
     @user = current_user
     @user_reservations = Reservation.where(user_id:current_user.id)
     @current_messages = Message.where(reservation_id:(params[:id]))
-
 
   end
 
