@@ -23,6 +23,18 @@ $secondary-accent: #8FBE00;
   float: left;
   margin: 0 auto;
 }
+
+.chef-reservations{
+  width: 100%;
+  border: solid;
+  display: inline-block;
+}
+
+.current-reservation{
+  width: 100%;
+  border: solid;
+  display: inline-block;
+}
 //////////////////////////////////////////////////////////////////////
 @import url(http://fonts.googleapis.com/css?family=Philosopher:400,700,400italic);
 
