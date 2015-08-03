@@ -65,7 +65,7 @@ end
 def get_phone(n)
   number_to_phone(5551000000+n, area_code: true)
 end
-
+reservations = 1
 (1..num_users).each do |n|
   zipCity = zip_city
   a = Faker::Address.street_address
@@ -97,6 +97,7 @@ end
                   phone: get_phone(n+1000),
                   password_digest:BCrypt::Password.create(n))
   if n % reservation_factor == 0
+    reservations += 1
     r = Reservation.create(user_id:u.id,
                          details:Faker::Lorem.sentence,
                          date:get_date,
@@ -107,19 +108,22 @@ end
                          state:'FL',
                          zip:zip,
                          phone:phone)
-    num_m = rand(4)
-    r.chef_id = c.id
-    num_m.times do |i|
-      if i % 2 == 0
-        m = Message.create(chef_id:c.id,
-                        reservation_id:r.id,
-                        subject:Faker::Lorem.sentence,
-                        message:Faker::Lorem.sentence(45))
-      else
-        m = Message.create(user_id:u.id,
-                           reservation_id:r.id,
-                           subject:Faker::Lorem.sentence,
-                           message:Faker::Lorem.sentence(45))
+    if reservations % 2 == 0
+      num_m = rand(4)
+      r.chef_id = c.id
+      r.save
+      num_m.times do |i|
+        if i % 2 == 0
+          m = Message.create(chef_id:c.id,
+                             reservation_id:r.id,
+                             subject:Faker::Lorem.sentence,
+                             message:Faker::Lorem.sentence(45))
+        else
+          m = Message.create(user_id:u.id,
+                             reservation_id:r.id,
+                             subject:Faker::Lorem.sentence,
+                             message:Faker::Lorem.sentence(45))
+        end
       end
     end
   end
