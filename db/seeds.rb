@@ -99,6 +99,7 @@ reservations = 1
   if n % reservation_factor == 0
     reservations += 1
     r = Reservation.create(user_id:u.id,
+                         recipe_id:rand(10)+1,
                          details:Faker::Lorem.sentence,
                          date:get_date,
                          time:get_time,
@@ -117,14 +118,19 @@ reservations = 1
           m = Message.create(chef_id:c.id,
                              reservation_id:r.id,
                              subject:Faker::Lorem.sentence,
-                             message:Faker::Lorem.sentence(45))
+                             message:Faker::Hacker.say_something_smart)
         else
           m = Message.create(user_id:u.id,
                              reservation_id:r.id,
                              subject:Faker::Lorem.sentence,
-                             message:Faker::Lorem.sentence(45))
+                             message:Faker::Hacker.say_something_smart)
         end
       end
     end
   end
+end
+10.times do
+  Recipe.create(title:Faker::Lorem.sentence,
+                description:Faker::Lorem.sentence(10),
+                recipe:Faker::Lorem.sentence(25))
 end

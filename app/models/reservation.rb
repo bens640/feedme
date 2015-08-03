@@ -1,5 +1,5 @@
 class Reservation < ActiveRecord::Base
-
+  belongs_to :recipe
   belongs_to :user
   belongs_to :chef
   validates :time, :address, :city, :state, :zip, :phone, presence: true

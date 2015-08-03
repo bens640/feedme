@@ -31,8 +31,10 @@ class CreateUsers < ActiveRecord::Migration
     create_table :reservations do |t|
       t.belongs_to :user, index: true
       t.belongs_to :chef, index: true
+      t.belongs_to :recipe
       t.text :details
       t.date :date
+      t.integer :plates
       t.string :time, null:false
       t.string :address, null:false
       t.string :address2
@@ -49,6 +51,12 @@ class CreateUsers < ActiveRecord::Migration
         t.string :subject, null:false
         t.text :message, null:false
         t.timestamps null: false
+    end
+    create_table :recipes do |t|
+      t.string :title, null:false
+      t.string :description, null:false
+      t.text :recipe, null:false
+      t.timestamps null: false
     end
   end
 end
