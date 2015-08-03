@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
       session[:chef_id] = @chef.id
       redirect_to reservations_path, flash:{notice:"#{@chef.first_name} you are logged in as a chef"}
     else
-      render action: 'new', flash:{notice:"please try to login again"}
+      redirect_to login_chef_path, flash:{notice:"please try to login again"}
     end
   end
 
