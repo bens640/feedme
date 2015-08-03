@@ -1,5 +1,16 @@
 nav.menu
   .name Cookio
+  section.wrapper
+    section.material-design-hamburger
+      button.material-design-hamburger__icon
+        span.material-design-hamburger__layer
+    section.menu-ham.menu--off
+      div
+        == link_to 'Home', root_path
+      div
+
+      div
+      div
   ul.inline-list
     li
       == link_to 'Home', root_path
@@ -11,9 +22,7 @@ nav.menu
         == link_to 'New Reservation', reservations_new_path
       li
         == link_to 'My Reservations', users_my_reservations_user_path
-    -if current_chef
-      li
-        == link_to 'My Reservation', chefs_my_reservations_chef_path
+
     -unless current_chef || current_user
       li
         == link_to 'New Chef', new_chef_path
