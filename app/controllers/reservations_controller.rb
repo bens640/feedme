@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :set_reservation, only: [:show, :current_reservation_user, :my_reservations_user]
+  before_action :set_reservations, only: [ :current_reservation_user, :my_reservations_user]
   before_action :require_logged_in
 
   include ApplicationHelper
@@ -13,7 +13,11 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new
   end
   def show
-    @reservation = Reservation.find(params[:id])
+    if current_user
+      @reservation = current_user.reservations.find(params[:id])
+    elsif current_chef
+      @reservation = Reservation.find(params[:id])
+    end
     @messages = Message.where(reservation_id: params[:id])
     @r = Reservation.find(params[:id])
     @user = @r.user
@@ -64,7 +68,7 @@ class ReservationsController < ApplicationController
         require(:reservation).
         permit(:details, :date, :time, :address, :address2, :city, :state, :zip, :phone)
   end
-  def set_reservation
+  def set_reservations
     @user_reservations = Reservation.where(user_id:current_user.id)
   end
 end
