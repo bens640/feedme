@@ -7,8 +7,6 @@ nav.menu
       .slice
     section
       ul#menu-list
-        li
-          == link_to 'Home', root_path
         -unless current_chef || current_user
           li.active
             == link_to 'New User', new_user_path
