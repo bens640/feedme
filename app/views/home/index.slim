@@ -1,0 +1,15 @@
+.index-photo
+  = image_tag('http://i.huffpost.com/gen/1475945/images/o-COOKING-AT-HOME-facebook.jpg')
+.index-photo
+  = image_tag('https://s3.amazonaws.com/cookie-pics/how_do_you_cookio.png')
+
+.become-a-chef
+  p Become a Chef! #{link_to 'Click Here', new_chef_path}
+.make-a-reservation
+  - if current_user
+    = link_to 'Make a Reservation', new_reservation_path
+  - elsif current_chef
+  -else
+    = link_to 'Make a Reservation', new_user_path, class: 'btn paper paper-curl'
+
+

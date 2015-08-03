@@ -1,4 +1,7 @@
 class ReservationsController < ApplicationController
+  before_action :set_reservation, only: [:show, :current_reservation_user, :my_reservations_user]
+  before_action :require_logged_in
+
   include ApplicationHelper
   def index
     @chef_reservations = Reservation.chef(current_chef.id)#where(chef_id:current_chef.id)
@@ -12,17 +15,13 @@ class ReservationsController < ApplicationController
   def show
     @reservation = Reservation.find(params[:id])
     @messages = Message.where(reservation_id: params[:id])
-
     @r = Reservation.find(params[:id])
-
     @user = @r.user
     @chef = @r.chef
     @new_reservations_message = Message.new
   end
 
   def current_reservation_user
-    @user_reservations = Reservation.where(user_id:current_user.id)
-
   end
 
   def current_reservation_chef
@@ -30,8 +29,6 @@ class ReservationsController < ApplicationController
   end
 
   def my_reservations_user
-    @user_reservations = Reservation.where(user_id:current_user.id)
-
   end
 
   def my_reservations_chef
@@ -56,7 +53,6 @@ class ReservationsController < ApplicationController
 
   def destroy
     @reservation = Reservation.find(params[:id])
-    Message.where(reservation_id:@reservation.id)
     @reservation.destroy
     redirect_to root_path, flash:{notice:"Reservation Removed"}
   end
@@ -67,5 +63,8 @@ class ReservationsController < ApplicationController
     params.
         require(:reservation).
         permit(:details, :date, :time, :address, :address2, :city, :state, :zip, :phone)
+  end
+  def set_reservation
+    @user_reservations = Reservation.where(user_id:current_user.id)
   end
 end

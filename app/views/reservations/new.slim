@@ -13,7 +13,7 @@
                 = f.input :date
             .row.collapse
               .small-10.columns
-                  = f.select :time, options_for_select(Reservation::LIST_TIME)
+                = f.select :time, options_for_select(Reservation::LIST_TIME)
             .row.collapse
               .small-10.columns
                 = f.input :address

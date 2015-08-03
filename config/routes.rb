@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'messages/new'
 
-
+  get 'home/index'
   get 'reservations/new'
   get 'login_chef' => 'sessions#new_chef'
   get 'login_user' => 'sessions#new_user'
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get 'reservations/show'
   patch 'reservations/show'
 
-  root 'users#index'
+  root 'home#index'
 
   get '/logout', to: 'sessions#destroy'
 
