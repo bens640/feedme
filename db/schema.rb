@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20150721043832) do
 
   create_table "chefs", force: :cascade do |t|
     t.string   "first_name",      null: false
-    t.string   "last_name"
+    t.string   "last_name",       null: false
     t.string   "email",           null: false
     t.string   "password_digest"
     t.string   "address"
@@ -50,13 +50,13 @@ ActiveRecord::Schema.define(version: 20150721043832) do
     t.integer  "chef_id"
     t.text     "details"
     t.date     "date"
-    t.string   "time"
-    t.string   "address"
+    t.string   "time",       null: false
+    t.string   "address",    null: false
     t.string   "address2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.string   "phone"
+    t.string   "city",       null: false
+    t.string   "state",      null: false
+    t.string   "zip",        null: false
+    t.string   "phone",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

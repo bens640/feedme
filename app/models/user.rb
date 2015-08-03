@@ -15,4 +15,7 @@ class User < ActiveRecord::Base
             allow_nil: true
   # validates :password_digest, confirmation: true
   # validates :password_digest_confirmation, presence: true
+  def name
+    [first_name, last_name].join " "
+  end
 end

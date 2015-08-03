@@ -16,3 +16,16 @@
 //= require_tree .
 
 
+function ready() {
+    $(document).ready(function () {
+
+        $("#hamburger").click(function () {
+
+            $("#menu-list").toggleClass("opacity");
+            $(".slice").toggleClass("transform");
+
+        })
+
+    });
+}
+$(document).on('ready page:load', ready)

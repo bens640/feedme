@@ -2,12 +2,16 @@ class Reservation < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :chef
+  validates :time, :address, :city, :state, :zip, :phone, presence: true
   has_many :messages, dependent: :destroy
   def self.info
     Hash[*Reservation.available.all.map{|b| [b.user.first_name, b.user.city]}.flatten]
   end
   def self.available
-    where(chef_id:nil)
+    where(chef_id:nil).order("date ASC")
+  end
+  def self.chef(chef)
+    where(chef_id:chef).order("date ASC")
   end
 
   LIST_TIME= %w[10:00am 11:00am 12:00pm
