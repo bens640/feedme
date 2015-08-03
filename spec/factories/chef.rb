@@ -2,7 +2,7 @@ require 'faker'
 require 'bcrypt'
 
 FactoryGirl.define do
-  factory :user do
+  factory :chef do
     first_name {Faker::Name.first_name}
     last_name {Faker::Name.last_name}
     email {Faker::Internet.email}
@@ -15,7 +15,7 @@ FactoryGirl.define do
     password_digest {BCrypt::Password.create(123)}
     id 1
   end
-  factory :many_users do
+  factory :many_chefs do
     10.times do |i|
       first_name {Faker::Name.first_name}
       last_name {Faker::Name.last_name}

@@ -10,4 +10,7 @@ class User < ActiveRecord::Base
   validates_format_of :phone, :with => /\A(1?(?: |\-|\.)?(?:\(\d{3}\)|\d{3})(?: |\-|\.)?\d{3}(?: |\-|\.)?\d{4})\z/, message: "bad format ex. 555-555-5555"
   # validates :password_digest, confirmation: true
   # validates :password_digest_confirmation, presence: true
+  def name
+    [first_name, last_name].join " "
+  end
 end
