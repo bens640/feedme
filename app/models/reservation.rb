@@ -8,7 +8,7 @@ class Reservation < ActiveRecord::Base
     Hash[*Reservation.available.all.map{|b| [b.user.first_name, b.user.city]}.flatten]
   end
   def self.available
-    where(chef_id:nil)
+    where(chef_id:nil).order("date ASC")
   end
   def self.chef(chef)
     where(chef_id:chef).order("date ASC")

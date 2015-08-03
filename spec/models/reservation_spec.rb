@@ -12,4 +12,13 @@ describe Reservation do
     result = Reservation.chef(chef.id)
     expect(result).to eq(reservations)
   end
+  it 'returns all of the reservations that are available' do
+    # chef = create(:chef)
+    reservations = []
+    (1..5).each do |i|
+      reservations << create(:reservation, id:i, date: i.days.from_now, chef_id: nil)
+    end
+    result = Reservation.available
+    expect(result).to eq(reservations)
+  end
 end

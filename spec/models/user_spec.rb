@@ -23,5 +23,4 @@ describe User do
     contact = create(:user, first_name: "John", last_name: "Doe")
     expect(contact.name).to eq('John Doe')
   end
-
 end
