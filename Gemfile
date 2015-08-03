@@ -39,6 +39,7 @@ gem 'pg'
 gem 'wirble'
 gem 'faker'
 
+
 group :production do
   gem 'rails_12factor'
 end
@@ -48,13 +49,17 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'better_errors'
-  gem "capybara"
   # Access an IRB console on exception pages or by using <%= console %> in views
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem "minitest-rails"
+  gem 'minitest-rails'
   gem 'spring'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
-  gem 'rspec-rails', '~> 3.0'
+  gem 'rspec-rails'
   gem 'capybara-screenshot'
+end
+group :test do
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
 end

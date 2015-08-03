@@ -17,7 +17,7 @@ class CreateUsers < ActiveRecord::Migration
     end
     create_table :chefs do |t|
       t.string :first_name, null: false
-      t.string :last_name#, null: false
+      t.string :last_name, null: false
       t.string :email, null: false
       t.string :password_digest
       t.string :address
@@ -33,13 +33,13 @@ class CreateUsers < ActiveRecord::Migration
       t.belongs_to :chef, index: true
       t.text :details
       t.date :date
-      t.string :time
-      t.string :address
+      t.string :time, null:false
+      t.string :address, null:false
       t.string :address2
-      t.string :city
-      t.string :state
-      t.string :zip
-      t.string :phone
+      t.string :city, null:false
+      t.string :state, null:false
+      t.string :zip, null:false
+      t.string :phone, null:false
       t.timestamps null: false
     end
     create_table :messages do |t|
