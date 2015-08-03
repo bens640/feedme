@@ -4,7 +4,6 @@ class ReservationsController < ApplicationController
     @chef_reservations = Reservation.chef(current_chef.id)#where(chef_id:current_chef.id)
     @available_reservations = Reservation.available
     @chef = Chef.find(session[:chef_id])
-    @reservations_by_city = Reservation.available.by_city(params[:city])
   end
 
   def new
