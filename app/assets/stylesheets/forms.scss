@@ -22,9 +22,10 @@ margin: 0 auto;
 .signup-panel{
   border-radius: 5px;
   border: 1px solid #ccc;
-  padding: 15px;
-  padding-right: 50px;
+  padding: 15px 50px 15px 15px;
   margin: 30px auto;
+  text-align: center;
+  width: 50%;
 
 
   form{
@@ -43,13 +44,21 @@ margin: 0 auto;
 	font-weight: 200;
 	margin-left: 25%;
   }
-  .button{
-	margin-left: 35%;
-  }
 
 }
 .large-6.columns{
   margin-top: 100px;
+}
+.small-10.columns{
+  align-content: center;
+  margin: auto;
+  box-sizing: border-box;
+  input {
+	background-color: #AEE239;
+	width : 150px;
+	margin: 0;
+	box-sizing: border-box;
+  }
 }
 
 
