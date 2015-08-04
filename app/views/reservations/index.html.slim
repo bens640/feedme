@@ -9,6 +9,8 @@
         h3 Time: #{reservation.time}
         h3 Details:
         = reservation.details
+        h3 Recipe:
+        = reservation.recipe.title
         br /
         = link_to "show", reservation
 .current-reservations
@@ -20,6 +22,8 @@
       h3 Time: #{reservation.time}
       h3 Details:
       = reservation.details
+      h3 Recipe:
+      = reservation.recipe.title
       br /
       = link_to "show", reservation
 

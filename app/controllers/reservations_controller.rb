@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :set_reservations, only: [ :current_reservation_user, :my_reservations_user]
-  before_action :set_user, only: :new
+  before_action :set_user, only: [:new, :create]
   before_action :require_logged_in
 
   include ApplicationHelper
@@ -12,6 +12,7 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new
+    @recipes = Recipe.all
   end
   def show
     if current_user
@@ -45,9 +46,9 @@ class ReservationsController < ApplicationController
     @reservation = current_user.reservations.new reservation_params
 
     if @reservation.save
-      redirect_to root_path, flash:{notice: 'Created reservation'}
+      redirect_to @user, flash:{notice: 'Created reservation'}
     else
-      render action: root_path, flash:{notice:'there was an error'}
+      redirect_to :back, flash:{notice:'Make sure required fields are filled'}
     end
   end
   def update
@@ -68,7 +69,7 @@ class ReservationsController < ApplicationController
   def reservation_params
     params.
         require(:reservation).
-        permit(:details, :date, :time, :address, :address2, :city, :state, :zip, :phone)
+        permit(:details, :date, :time, :address, :address2, :city, :state, :zip, :phone, :recipe_id)
   end
   def set_reservations
     @user_reservations = Reservation.where(user_id:current_user.id)

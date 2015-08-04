@@ -6,29 +6,34 @@
         = simple_form_for @reservation do |f|
           .row.collapse
             .small-10.columns
+              = f.collection_select(:recipe_id, @recipes, :id, :title)
+          .row.collapse
+            .small-10.columns
               = f.input :details
           .row.collapse
             .small-10.columns
-              = f.input :date
+              = f.input :date, :required => true
           .row.collapse
             .small-10.columns
                 = f.select :time, options_for_select(Reservation::LIST_TIME)
           .row.collapse
             .small-10.columns
-              = f.input :address
+              = f.input :address, :required => true, input_html: { value: @user.address }
           .row.collapse
             .small-10.columns
               = f.input :address2
           .row.collapse
             .small-10.columns
-              = f.input :city
+              = f.input :city, :required => true, input_html: { value: @user.city }
           .row.collapse
             .small-10.columns
-              = f.input :state
+              = f.input :state, :required => true, input_html: { value: @user.state }
           .row.collapse
             .small-10.columns
-              = f.input :zip
+              = f.input :zip, :required => true, input_html: { value: @user.zip }
           .row.collapse
             .small-10.columns
-              = f.input :phone
+              = f.input :phone, :required => true, input_html: { value: @user.phone }
+          .row.collapse
+            .small-10.columns
               = f.button :submit

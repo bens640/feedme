@@ -17,13 +17,10 @@ nav.menu
         -if current_user
           li
             == link_to 'New Reservation', reservations_new_path
-          li
-            == link_to 'My Reservations', users_my_reservations_user_path
-
         -unless current_chef || current_user
           li
             == link_to 'New Chef', new_chef_path
-        -unless current_chef || current_user
+        -unless current_chef || current_usergit
           li
             == link_to 'Chef Login', login_chef_path
         -unless current_chef || current_user
