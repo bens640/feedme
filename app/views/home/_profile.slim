@@ -2,7 +2,7 @@
   .form-wrapper
     .large-6.columns
       .signup-panel
-        = simple_form_for @user do |f|
+        = simple_form_for @profile do |f|
           form
             .row.collapse
               .small-10.columns
@@ -13,6 +13,12 @@
             .row.collapse
               .small-10.columns
                 = f.input :last_name
+            .row.collapse
+              .small-10.columns
+                = f.input :address
+            .row.collapse
+              .small-10.columns
+                = f.input :address2
             .row.collapse
               .small-10.columns
                 = f.input :city
@@ -31,4 +37,9 @@
             .row.collapse
               .small-10.columns
                 = f.input :password_confirmation
+            .row.collapse
+              .small-10.columns
+                = f.input :old_password
+            .row.collapse
+              .small-10.columns
                 = f.button :submit

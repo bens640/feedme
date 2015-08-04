@@ -1,10 +1,10 @@
-h1 My Reservations
-- @chef_reservations.each do |reservation|
-  = div_for(reservation, class: 'my_reservation') do
-    h3 User:  #{reservation.chef.first_name}
-    h3 Date: #{reservation.date}
-    h3 Time: #{reservation.time}
-    h3 Details: #{reservation.details}
+h1 My confirmations
+- @chef_confirmations.each do |confirmation|
+  = div_for(confirmation, class: 'my_confirmation') do
+    h3 User:  #{confirmation.chef.first_name}
+    h3 Date: #{confirmation.date}
+    h3 Time: #{confirmation.time}
+    h3 Details: #{confirmation.details}
     br /
-    = link_to 'Show', reservation
-    = link_to "Remove Reservation", reservation, method: :delete, data: {confirm: "Are you sure you would like to delete this Resource?"}
+    = link_to 'Show', confirmation
+    = link_to "Remove confirmation", confirmation, method: :delete, data: {confirm: "Are you sure you would like to delete this Resource?"}

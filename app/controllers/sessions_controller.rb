@@ -13,7 +13,11 @@ class SessionsController < ApplicationController
 
     if @user
       session[:user_id] = @user.id
-      redirect_to new_reservation_path, flash:{notice:"#{@user.first_name} you are logged in as a user"}
+      if @user.id == 1
+        redirect_to root_path, flash:{notice:'you are logged in as a admin'}
+      else
+        redirect_to new_reservation_path(@user), flash:{notice:"#{@user.first_name} you are logged in as a user"}
+      end
     else
       redirect_to login_user_path, flash:{notice:"please try to login again"}
     end
@@ -25,7 +29,6 @@ class SessionsController < ApplicationController
       try(:authenticate, params[:password])
 
     if @chef
-      #logged in hooray
       session[:chef_id] = @chef.id
       redirect_to reservations_path, flash:{notice:"#{@chef.first_name} you are logged in as a chef"}
     else

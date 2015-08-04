@@ -65,6 +65,10 @@ end
 def get_phone(n)
   number_to_phone(5551000000+n, area_code: true)
 end
+User.create(first_name: 'admin',
+            last_name: 'admin',
+            email:"admin@admin.com",
+            password_digest: BCrypt::Password.create('admin'))
 reservations = 1
 (1..num_users).each do |n|
   zipCity = zip_city
@@ -131,6 +135,6 @@ reservations = 1
 end
 10.times do
   Recipe.create(title:Faker::Lorem.sentence,
-                description:Faker::Lorem.sentence(10),
+                ingredients:Faker::Lorem.words(8),
                 recipe:Faker::Lorem.sentence(25))
 end

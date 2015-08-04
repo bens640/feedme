@@ -1,0 +1,18 @@
+.row
+  .form-wrapper
+    .large-6.columns
+      .signup-panel
+        p.welcome New Recipe
+        = simple_form_for @recipe do |f|
+          .row.collapse
+            .small-10.columns
+              = f.input :title
+          .row.collapse
+            .small-10.columns
+              = f.input :ingredients
+          .row.collapse
+            .small-10.columns
+              = f.input :recipe
+          .row.collapse
+            .small-10.columns
+              = f.button :submit

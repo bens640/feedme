@@ -1,4 +1,7 @@
 class ChefsController < ApplicationController
+  before_action :set_chef, only: [:edit, :show, :update]
+  before_action :require_chef, only:[:edit,:show,:update]
+
   def new
     @chef = Chef.new
   end
@@ -7,27 +10,43 @@ class ChefsController < ApplicationController
     @chef = Chef.new chef_params
     if @chef.save
       session[:chef_id] = @chef.id
-      ChefMailer.welcome_email(@chef).deliver
+      # ChefMailer.welcome_email(@chef).deliver
       redirect_to reservations_path, flash:{notice: 'Created chef and logged in'}
     else
       render action: 'new', flash:{notice: 'Please try again'}
     end
   end
 
-  def chef_account
-    @chef = current_chef
-    @chef_reservations = Reservation.where(chef_id:current_chef.id)
+  def edit
+    @profile = current_chef
   end
 
-  def my_reservations_chef
-    @chef_reservations = Reservation.where(chef_id:current_chef.id)
+  def show
+    @chef_confirmations = Reservation.where(chef_id:current_chef.id)
+    @chef_reservations = Reservation.where(chef_id:nil)
   end
-
+  def update
+    @chef = Chef.
+        find_by(email: @chef[:email]).
+        try(:authenticate, chef_params[:old_password])
+    if @chef
+      if @chef.update(chef_params.except(:old_password))
+        redirect_to @chef, notice: 'Chef was successfully updated'
+      else
+        redirect_to :back, notice: 'something went wrong'
+      end
+    else
+      redirect_to :back, notice: 'Your old password was wrong'
+    end
+  end
 
   private
+  def set_chef
+    @chef = current_chef
+  end
   def chef_params
     params.
     require(:chef).
-    permit(:email, :password,:first_name, :last_name, :password_confirmation, :city, :state, :zip, :phone)
+    permit(:email, :password,:first_name, :last_name, :password_confirmation, :city, :state, :zip, :phone, :old_password)
   end
 end

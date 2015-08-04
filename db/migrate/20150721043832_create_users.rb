@@ -54,7 +54,7 @@ class CreateUsers < ActiveRecord::Migration
     end
     create_table :recipes do |t|
       t.string :title, null:false
-      t.string :description, null:false
+      t.string :ingredients, null:false
       t.text :recipe, null:false
       t.timestamps null: false
     end

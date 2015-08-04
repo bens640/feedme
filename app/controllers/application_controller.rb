@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :current_chef,:is_logged_in
-
+  helper_method :current_user, :current_chef, :is_logged_in, :is_admin?
   private
     def current_user
       @current_user ||= User.find_by(id: session[:user_id])
@@ -17,8 +16,22 @@ class ApplicationController < ActionController::Base
       current_chef || current_user
     end
     def require_logged_in
-      unless (current_chef || current_user)
-        redirect_to root_path
-      end
+      return true if (current_chef || current_user)
+      redirect_to root_path
+      false
+    end
+    def require_chef
+      return true if current_chef
+      redirect_to root_path
+      false
+    end
+    def require_user
+      return true if current_user
+      redirect_to root_path
+      false
+    end
+    def is_admin?
+      return true if current_user == User.find(1)
+      false
     end
 end

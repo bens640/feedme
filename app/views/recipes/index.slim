@@ -1,0 +1,22 @@
+= div_for(@recipes, class: 'recipe') do |recipe|
+  .recipe_title
+    = recipe.title
+    .admin_buttons
+      - if is_admin?
+        .destroy
+          = link_to "Destroy", recipe, method: :delete, data: { confirm: "Are you sure you would like to destroy this recipe?" }
+        .edit
+          = link_to "Edit", edit_recipe_path(recipe)
+  .recipe_image
+    = image_tag("/image.jpg", height: '300', width: '300')
+  .recipe_ingredients
+    = content_tag :div do
+      -JSON.parse(recipe.ingredients).each_with_index do |item,index|
+        p
+          span
+            = (index + 1).to_s + ' - '
+          span
+            =item
+  .recipe_info
+    = recipe.recipe
+  hr
