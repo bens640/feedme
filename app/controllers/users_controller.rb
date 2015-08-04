@@ -25,9 +25,8 @@ class UsersController < ApplicationController
 
   def show
     @user_reservations = Reservation.where(user_id:current_user.id)
-    @user = current_user.first_name
+    @user = current_user
   end
-
 
   def update
     @user = User.
