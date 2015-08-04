@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get 'chefs/my_reservations_chef'
 
 
-  resources :users, :chefs, :recipes
+  resources :users, :chefs, :recipes, :charges
   resources :reservations do
     resources :messages
   end
