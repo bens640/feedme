@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update]
   before_action :require_user, only:[:edit,:show,:update]
+  before_action :require_logged_in
+
 
   def new
     @user = User.new
@@ -23,6 +25,7 @@ class UsersController < ApplicationController
 
   def show
     @user_reservations = Reservation.where(user_id:current_user.id)
+    @user = current_user.first_name
   end
 
 

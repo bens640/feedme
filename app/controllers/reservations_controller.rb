@@ -35,7 +35,6 @@ class ReservationsController < ApplicationController
   end
 
   def my_reservations_user
-    @user_reservations = Reservation.where(user_id:current_user.id)
   end
 
   def my_reservations_chef

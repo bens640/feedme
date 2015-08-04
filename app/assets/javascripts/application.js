@@ -24,8 +24,11 @@ function ready() {
             $("#menu-list").toggleClass("opacity");
             $(".slice").toggleClass("transform");
 
-        })
+        });
 
     });
+
 }
-$(document).on('ready page:load', ready)
+
+
+$(document).on('ready page:load', ready);
