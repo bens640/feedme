@@ -38,7 +38,8 @@ gem 'simple_form'
 gem 'pg'
 gem 'wirble'
 gem 'faker'
-
+# stripe gem for payment
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :production do
   gem 'rails_12factor'
