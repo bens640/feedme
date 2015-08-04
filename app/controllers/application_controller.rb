@@ -31,7 +31,6 @@ class ApplicationController < ActionController::Base
       false
     end
     def is_admin?
-      return true if current_user == User.find(1)
-      false
+      (current_user && current_user.email == 'admin@admin.com') ? true : false
     end
 end

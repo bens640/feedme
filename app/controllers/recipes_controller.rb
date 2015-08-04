@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_action :is_admin?, except: :index
   def index
     @recipes = Recipe.all.order('updated_at DESC')
   end
