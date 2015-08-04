@@ -5,21 +5,16 @@
         p.welcome New User
         = simple_form_for @user do |f|
           .row.collapse
-            .small-10.columns
-              = f.input :email
+            = f.input :email, label: false
           .row.collapse
-            .small-10.columns
-              = f.input :first_name
+            = f.input :first_name
           .row.collapse
-            .small-10.columns
-              = f.input :last_name
+            = f.input :last_name
           .row.collapse
-            .small-10.columns
-              = f.input :password
+            = f.input :password
           .row.collapse
-            .small-10.columns
-              = f.input :password_confirmation
-              = f.button :submit
+            = f.input :password_confirmation
+          = f.button :submit
           p
             | Already have an account?
             == link_to "Login Here ", sessions_login_user_path

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'login_chef' => 'sessions#new_chef'
   get 'login_user' => 'sessions#new_user'
 
+
+
   post 'sessions/login_user'
   post 'sessions/login_chef'
 
@@ -23,7 +25,7 @@ Rails.application.routes.draw do
   end
   get 'reservations/show'
   patch 'reservations/show'
-
+  get 'home/mobile'
   root 'home#index'
 
   get '/logout', to: 'sessions#destroy'
