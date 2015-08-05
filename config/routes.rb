@@ -1,32 +1,33 @@
 Rails.application.routes.draw do
 
-  get 'messages/new'
-
+  root 'home#index'
   get 'home/index'
-  get 'reservations/new'
-  get 'login_chef' => 'sessions#new_chef'
+  get 'home/mobile'
+
+
+  resources :users, :chefs, :recipes, :charges
+
+  get 'users/user_account'
+  get 'users/my_reservations_user'
   get 'login_user' => 'sessions#new_user'
 
+  get 'chefs/chef_account'
+  get 'chefs/my_reservations_chef'
+  get 'login_chef' => 'sessions#new_chef'
 
+  get 'messages/new'
+
+  get 'reservations/new'
 
   post 'sessions/login_user'
   post 'sessions/login_chef'
 
-
-  get 'chefs/chef_account'
-  get 'users/user_account'
-  get 'users/my_reservations_user'
-  get 'chefs/my_reservations_chef'
-
-
-  resources :users, :chefs, :recipes, :charges
   resources :reservations do
     resources :messages
   end
   get 'reservations/show'
   patch 'reservations/show'
-  get 'home/mobile'
-  root 'home#index'
+
 
   get '/logout', to: 'sessions#destroy'
 

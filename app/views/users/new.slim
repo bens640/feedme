@@ -1,4 +1,5 @@
-.row
+.form action="#"
+  .row
   .form-wrapper
     .large-6.columns
       .signup-panel
@@ -14,7 +15,7 @@
             = f.input :password
           .row.collapse
             = f.input :password_confirmation
-          = f.button :submit
+            = f.button :submit
           p
             | Already have an account?
             == link_to "Login Here ", sessions_login_user_path
