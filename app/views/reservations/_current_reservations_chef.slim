@@ -5,7 +5,7 @@ h1 My confirmations
     h3 Date: #{confirmation.date}
     h3 Time: #{confirmation.time}
     h3 Details: #{confirmation.details}
-    h3 Recipe: #{reservation.recipe.title}
+    h3 Recipe: #{confirmation.recipe.title}
     br /
     = link_to 'Show', confirmation
     = link_to "Remove confirmation", confirmation, method: :delete, data: {confirm: "Are you sure you would like to delete this Resource?"}
