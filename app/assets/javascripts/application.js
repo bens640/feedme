@@ -18,17 +18,16 @@
 
 function ready() {
     $(document).ready(function () {
-
         $("#hamburger").click(function () {
-
             $("#menu-list").toggleClass("opacity");
             $(".slice").toggleClass("transform");
-
         });
-
     });
 
+    $('#reservation_plates').click(function(){
+      var amount_charge = parseInt($('#reservation_plates').val())*2000+'';
+      $('.stripe-button').attr('data-amount', amount_charge);
+    });
+  //(parseInt($('#reservation_plates'))*20000)+""
 }
-
-
 $(document).on('ready page:load', ready);
