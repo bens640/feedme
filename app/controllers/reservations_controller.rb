@@ -44,7 +44,24 @@ class ReservationsController < ApplicationController
   def create
     @reservation = current_user.reservations.new reservation_params
 
+
     if @reservation.save
+
+      @amount = 500 * @reservation.zip.to_i
+
+      customer = Stripe::Customer.create(
+        :email => 'example@stripe.com',
+        :card  => params[:stripeToken]
+      )
+
+      charge = Stripe::Charge.create(
+        :customer    => customer.id,
+        :amount      => @amount,
+        :description => 'Rails Stripe customer',
+        :currency    => 'usd'
+      )
+
+
       redirect_to @user, flash:{notice: 'Created reservation'}
     else
       redirect_to :back, flash:{notice:'Make sure required fields are filled'}

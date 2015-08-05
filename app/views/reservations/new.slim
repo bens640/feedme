@@ -36,4 +36,6 @@
               = f.input :phone, :required => true, input_html: { value: @user.phone }
           .row.collapse
             .small-10.columns
-              = f.button :submit
+              
+              script.stripe-button data-amount="500" data-description=("A month's subscription") data-key="#{Rails.configuration.stripe[:publishable_key]}" src="https://checkout.stripe.com/checkout.js" 
+              
