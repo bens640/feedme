@@ -1,0 +1,58 @@
+form action="#"
+  header
+    h2 Example Responsive Form
+    div This form breaks at 600px and goes from a left-label form to a top-label form. At above 1200px, the labels align right.
+  div
+    label#title1.desc for="Field1"  Full Name
+    div
+      input#Field1.field.text.fn name="Field1" size="8" tabindex="1" type="text" value="" /
+  div
+    label#title3.desc for="Field3"
+      | Email
+    div
+      input#Field3 maxlength="255" name="Field3" spellcheck="false" tabindex="3" type="email" value="" /
+  div
+    label#title4.desc for="Field4"
+      | Message
+    div
+      textarea#Field4 cols="50" name="Field4" rows="10" spellcheck="true" tabindex="4"
+  div
+    fieldset
+      legend#title5.desc
+        | Select a Choice
+      div
+        input#radioDefault_5 name="Field5" type="hidden" value="" /
+        div
+          input#Field5_0 checked="checked" name="Field5" tabindex="5" type="radio" value=("First Choice") /
+          label.choice for="Field5_0"  First Choice
+        div
+          input#Field5_1 name="Field5" tabindex="6" type="radio" value=("Second Choice") /
+          label.choice for="Field5_1"  Second Choice
+        div
+          input#Field5_2 name="Field5" tabindex="7" type="radio" value=("Third Choice") /
+          label.choice for="Field5_2"  Third Choice
+  div
+    fieldset
+      legend#title6.desc
+        | Check All That Apply
+      div
+        div
+          input#Field6 name="Field6" tabindex="8" type="checkbox" value=("First Choice") /
+          label.choice for="Field6"  First Choice
+        div
+          input#Field7 name="Field7" tabindex="9" type="checkbox" value=("Second Choice") /
+          label.choice for="Field7"  Second Choice
+        div
+          input#Field8 name="Field8" tabindex="10" type="checkbox" value=("Third Choice") /
+          label.choice for="Field8"  Third Choice
+  div
+    label#title106.desc for="Field106"
+      | Select a Choice
+    div
+      select#Field106.field.select.medium name="Field106" tabindex="11"
+        option value=("First Choice")  First Choice
+        option value=("Second Choice")  Second Choice
+        option value=("Third Choice")  Third Choice
+  div
+    div
+      input#saveForm name="saveForm" type="submit" value="Submit" /

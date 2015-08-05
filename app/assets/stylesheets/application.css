@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+html{
+    width: 100%;
+}
 .body-wrapper{
     width: 100%;
 }

@@ -44,6 +44,7 @@ $secondary-accent: #8FBE00;
 
 
 .sidebar {
+  visibility: hidden;
   height: 70px;
   width: 70px;
   background-color: $neutral-color;
@@ -100,5 +101,10 @@ section {
 
 	  }
 	}
+  }
+}
+@media only screen and (max-device-width: 480px){
+  .sidebar {
+	visibility: visible;
   }
 }
