@@ -36,7 +36,6 @@ gem 'slim-rails'
 # gem 'haml'
 gem 'simple_form'
 gem 'pg'
-gem 'wirble'
 gem 'faker'
 # stripe gem for payment
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
@@ -44,7 +43,7 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 group :production do
   gem 'rails_12factor'
 end
-
+gem 'stripe_event'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
