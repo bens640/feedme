@@ -47,7 +47,7 @@ class ReservationsController < ApplicationController
 
     if @reservation.save
 
-      @amount = 500 * @reservation.zip.to_i
+      @amount = 2000 * @reservation.plates.to_i
 
       customer = Stripe::Customer.create(
         :email => 'example@stripe.com',
@@ -60,7 +60,6 @@ class ReservationsController < ApplicationController
         :description => 'Rails Stripe customer',
         :currency    => 'usd'
       )
-
 
       redirect_to @user, flash:{notice: 'Created reservation'}
     else
@@ -85,7 +84,7 @@ class ReservationsController < ApplicationController
   def reservation_params
     params.
         require(:reservation).
-        permit(:details, :date, :time, :address, :address2, :city, :state, :zip, :phone, :recipe_id)
+        permit(:details, :date, :time, :address, :address2, :city, :state, :zip, :phone, :recipe_id, :plates)
   end
   def set_reservations
     @user_reservations = Reservation.where(user_id:current_user.id)

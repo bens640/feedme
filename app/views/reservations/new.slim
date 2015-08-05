@@ -12,10 +12,14 @@
               = f.input :details
           .row.collapse
             .small-10.columns
+              = f.select :plates, options_for_select(Reservation::PLATE_NUMS)
+          .row.collapse
+          
+            .small-10.columns
               = f.input :date, :required => true
           .row.collapse
             .small-10.columns
-                = f.select :time, options_for_select(Reservation::LIST_TIME)
+              = f.select :time, options_for_select(Reservation::LIST_TIME)
           .row.collapse
             .small-10.columns
               = f.input :address, :required => true, input_html: { value: @user.address }
@@ -35,7 +39,6 @@
             .small-10.columns
               = f.input :phone, :required => true, input_html: { value: @user.phone }
           .row.collapse
-            .small-10.columns
-              
-              script.stripe-button data-amount="500" data-description=("A month's subscription") data-key="#{Rails.configuration.stripe[:publishable_key]}" src="https://checkout.stripe.com/checkout.js" 
-              
+            .small-10.columns    
+              script.stripe-button data-amount='' data-description=("Pay for Reservation") data-key="#{Rails.configuration.stripe[:publishable_key]}" src="https://checkout.stripe.com/checkout.js"
+        
