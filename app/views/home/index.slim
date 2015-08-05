@@ -9,7 +9,8 @@
   - if current_user
     = link_to 'Make a Reservation', new_reservation_path
   - elsif current_chef
+    = link_to 'All Reservations', reservations_path
   -else
-    = link_to 'Make a Reservation', new_user_path, class: 'btn paper paper-curl'
+    = link_to 'Make a Reservation', login_user_path, class: 'btn paper paper-curl'
 
 
