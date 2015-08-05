@@ -4,40 +4,40 @@ nav.menu
     .admin
       => link_to 'admin', recipes_path
       = link_to 'new recipe', new_recipe_path
-  .sidebar
-    #hamburger
-      .slice
-      .slice
-      .slice
-    section
-      ul#menu-list
-        li
-          == link_to 'Mobile', home_mobile_path
-        -if no_one_logged_in?
-          li
-            == link_to 'New User', new_user_path
-          li
-            == link_to 'New Chef', new_chef_path
-          li
-            == link_to 'Chef Login', login_chef_path
-          li
-            == link_to 'User Login', login_user_path
-        -if current_user
-          li
-            == link_to 'New Reservation', reservations_new_path
-        -if current_chef
-          li
-            == link_to 'Reservations', reservations_path
-        -if someone_logged_in?
-          li
-            == link_to 'My Account', (@chef || @user)
-          li
-            == link_to 'Sign Out', logout_path
-          li
-            == link_to 'Mobile', home_mobile_path
+  /.sidebar
+  /  #hamburger
+  /    .slice
+  /    .slice
+  /    .slice
+  /  section
+  /    ul#menu-list
+  /      li
+  /        == link_to 'Mobile', home_mobile_path
+  /      -if no_one_logged_in?
+  /        li
+  /          == link_to 'New User', new_user_path
+  /        li
+  /          == link_to 'New Chef', new_chef_path
+  /        li
+  /          == link_to 'Chef Login', login_chef_path
+  /        li
+  /          == link_to 'User Login', login_user_path
+  /      -if current_user
+  /        li
+  /          == link_to 'New Reservation', reservations_new_path
+  /      -if current_chef
+  /        li
+  /          == link_to 'Reservations', reservations_path
+  /      -if someone_logged_in?
+  /        li
+  /          == link_to 'My Account', (@chef || @user)
+  /        li
+  /          == link_to 'Sign Out', logout_path
+  /        li
+  /          == link_to 'Mobile', home_mobile_path
 ul#menu-list
   li
-    == link_to 'Mobile', home_mobile_path
+    /== link_to 'Mobile', home_mobile_path
   -if no_one_logged_in?
     li
       == link_to 'New User', new_user_path
