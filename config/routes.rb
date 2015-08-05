@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   post 'sessions/login_user'
   post 'sessions/login_chef'
 
+
+
   resources :reservations do
     resources :messages
   end

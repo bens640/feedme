@@ -8,7 +8,7 @@
         .edit
           = link_to "Edit", edit_recipe_path(recipe)
   .recipe_image
-    = image_tag("/image.jpg", height: '300', width: '300')
+    = image_tag( recipe.image, height: '300', width: '300')
   .recipe_ingredients
     = content_tag :div do
       -JSON.parse(recipe.ingredients).each_with_index do |item,index|
