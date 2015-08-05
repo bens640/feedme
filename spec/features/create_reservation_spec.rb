@@ -11,7 +11,7 @@ feature 'User authentication' do
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: '123'
     click_button 'Log in'
-    expect(page).to have_content("#{@user.first_name} you are logged in as a user")
+    expect(page).to have_content("you are logged in as a admin")
     fill_in 'Details', with: "Ha look at me now."
     select '2011', from: 'reservation[date(1i)]'
     select 'January', from: 'reservation[date(2i)]'

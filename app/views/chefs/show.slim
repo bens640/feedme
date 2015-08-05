@@ -1,5 +1,17 @@
 h1 My confirmation
 h2 Chef
 => link_to 'Make confirmation', reservations_path
-= link_to 'Edit Profile', edit_chef_path(@chef)
-= render 'reservations/current_reservations_chef'
+
+
+
+#tabs
+  ul
+    li
+      a href="#fragment-1"  Reservations
+    li
+      a href="#fragment-2"  Profile
+
+  #fragment-1
+    = render 'reservations/current_reservations_chef'
+  #fragment-2
+    = render 'home/profile'

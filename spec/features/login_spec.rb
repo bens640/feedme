@@ -27,6 +27,6 @@ feature 'User authentication' do
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: '123'
     click_button 'Log in'
-    expect(page).to have_content("#{@user.first_name} you are logged in as a user")
+    expect(page).to have_content("you are logged in as a admin")
     end
 end
