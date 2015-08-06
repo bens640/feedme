@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150805232041) do
     t.string   "state"
     t.string   "zip"
     t.string   "phone"
-    t.boolean  "active?"
+    t.boolean  "active"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20150805232041) do
     t.text     "details"
     t.date     "date"
     t.integer  "plates"
+    t.boolean  "closed"
+    t.boolean  "canceled"
     t.string   "time",       null: false
     t.string   "address",    null: false
     t.string   "address2"

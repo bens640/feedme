@@ -1,3 +1,4 @@
+script src="https://checkout.stripe.com/checkout.js"
 .row
   .form-wrapper
     .large-6.columns
@@ -37,12 +38,10 @@
           .row.collapse
             .small-10.columns
               = f.input :phone, :required => true, input_html: { value: @user.phone }
-          /.row.collapse
-          /  .small-10.columns
-          /    script.stripe-button data-amount="300" data-description=("Pay for Reservation") data-key="#{Rails.configuration.stripe[:publishable_key]}" src="https://checkout.stripe.com/checkout.js"
           .row.collapse
             .small-10.columns
               h1#payment $20.00
           .row.collapse
-            .small-10.columns    
-              script.stripe-button data-amount='' data-description=("Pay for Reservation") data-key="#{Rails.configuration.stripe[:publishable_key]}" src="https://checkout.stripe.com/checkout.js"
+            .small-10.columns
+              <button style="display: block;" class="confirm btn btn-xl profile-continue-btn" id="continue">Continue</button>
+              /script.stripe-button data-amount='' data-description=("Pay for Reservation") data-key="#{Rails.configuration.stripe[:publishable_key]}" src="https://checkout.stripe.com/checkout.js"

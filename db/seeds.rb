@@ -99,7 +99,7 @@ reservations = 1
                   state: 'FL',
                   zip: zipCity[0].to_s,
                   phone: get_phone(n+1000),
-                  active?: true,
+                  active: true,
                   password_digest:BCrypt::Password.create(n))
   if n % reservation_factor == 0
     reservations += 1
@@ -112,6 +112,8 @@ reservations = 1
                          address2:a2,
                          city:city,
                          state:'FL',
+                         # closed?:false,
+                         # canceled?:false,
                          zip:zip,
                          phone:phone)
     if reservations % 2 == 0
