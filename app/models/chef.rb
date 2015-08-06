@@ -12,6 +12,6 @@ class Chef < ActiveRecord::Base
   # validates :password_digest_confirmation, presence: true
 
   def init
-    self.active = false if (self.has_attribute? :active) && self.active.nil? #will set the default value only if it's nil
+    self.active = false if (self.has_attribute? :active) && self.active.nil?
   end
 end

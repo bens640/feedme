@@ -24,19 +24,22 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user_reservations = Reservation.user_reservations(current_user)
+    @user_reservations = Reservation.user(current_user)
     @user = current_user
     @profile = @user
   end
 
   def update
-    @user = User.auth_change(@user,user_params)
-
+    @user = User.
+        find_by(email: @user[:email]).
+        try(:authenticate, user_params[:old_password])
     if @user
       # new_params = user_params.reject{|a| a==""}
-      if @user.update(user_params.except(:old_password))
+      if @user.update_attributes(user_params.except(:old_password))
+        byebug
         redirect_to user_path, notice: 'User was successfully updated.'
       else
+        byebug
         redirect_to :back, notice: 'something went wrong'
       end
     else
@@ -50,7 +53,7 @@ class UsersController < ApplicationController
   end
   def user_params
     params.
-    require(:user).
-    permit(:email, :password,:first_name, :last_name, :password_confirmation, :city, :state, :zip, :phone, :old_password)
+        require(:user).
+        permit(:email, :password,:first_name, :address, :address2, :last_name, :password_confirmation, :city, :state, :zip, :phone, :old_password)
   end
 end

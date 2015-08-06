@@ -8,27 +8,31 @@ class Reservation < ActiveRecord::Base
   # def self.info
   #   Hash[*Reservation.available.all.map{|b| [b.user.first_name, b.user.city]}.flatten]
   # end
-  def self.available
-    where(chef_id:nil).order('date ASC')
-  end
-  def self.chef(chef)
-    where(chef_id:chef).order('date ASC')
-  end
-  def self.user(user)
-    where(user_id:user).order('date ASC')
-  end
+  # def self.available
+  #   where(chef_id:nil).order('date ASC')
+  # end
+  scope :available, ->{where(chef_id:nil).order('date ASC')}
+  scope :chef, ->(chef) { where(chef_id:chef.id).order('date ASC').includes(:recipe, :user)}
+  scope :user, ->(user) { where(user_id:user.id).order('date ASC').includes(:recipe, :user)}
+  # scope :chef_reservations, ->(chef) { where(chef_id:chef.id).order('date ASC').includes(:recipe, :user)}
+  # scope :user_reservations, ->(user) { where(user_id:user.id).order('date ASC').includes(:recipe, :user)}
+
+  # scope :created_before, ->(time) { where("created_at < ?", time) }
+  # def self.chef(chef)
+  #   where(chef_id:chef).order('date ASC')
+  # end
+  # def self.user(user)
+  #   where(user_id:user).order('date ASC')
+  # end
   LIST_TIME= %w[10:00am 11:00am 12:00pm
               1:00pm 2:00pm 3:00pm 4:00pm 5:00pm 6:00pm 7:00pm 8:00pm 9:00pm 10:00pm]
   PLATE_NUMS= [1,2,3,4,5,6,7,8]
-  def self.user_reservations(user)
-    where(user_id:user.id).includes(:recipe, :user)
-  end
-  def self.chef_reservations(chef)
-    chef(chef.id).includes(:recipe)
-  end
-  def helpers
-    ActionController::Base
-  end
+  # def self.user_reservations(user)
+  #   where(user_id:user.id).includes(:recipe, :user)
+  # end
+  # def self.chef_reservations(chef)
+  #   chef(chef.id).includes(:recipe)
+  # end
   # def current_user
   #   @current_user ||= User.find_by(id: session[:user_id])
   # end
