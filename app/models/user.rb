@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :reservations
   has_many :messages
 
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :email, :password, :password_confirmation,  presence: true
 
   validates :email,
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i},
