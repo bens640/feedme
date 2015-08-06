@@ -53,7 +53,7 @@ ul#menu-list
   -if !is_admin? && current_user
     li
       == link_to 'New Reservation', reservations_new_path
-  -if !is_admin? || current_chef
+  -if current_chef
     li
       == link_to 'Reservations', reservations_path
   -if someone_logged_in?

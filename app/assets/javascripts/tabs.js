@@ -4,6 +4,7 @@ ready = function() {
 
     $(function() {
         $( "#tabs" ).tabs();
+
     });
 };
 

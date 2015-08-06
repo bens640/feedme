@@ -14,9 +14,8 @@
             .small-10.columns
               = f.select :plates, options_for_select(Reservation::PLATE_NUMS)
           .row.collapse
-          
             .small-10.columns
-              = f.input :date, :required => true
+              = f.input :date
           .row.collapse
             .small-10.columns
               = f.select :time, options_for_select(Reservation::LIST_TIME)
