@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721043832) do
+ActiveRecord::Schema.define(version: 20150805232041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150721043832) do
     t.string   "state"
     t.string   "zip"
     t.string   "phone"
+    t.boolean  "active?"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150721043832) do
     t.text     "recipe",      null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "image"
   end
 
   create_table "reservations", force: :cascade do |t|

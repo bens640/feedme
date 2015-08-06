@@ -1,21 +1,11 @@
-.form action="#"
-  .row
-  .form-wrapper
-    .large-6.columns
-      .signup-panel
-        p.welcome New User
-        = simple_form_for @user do |f|
-          .row.collapse
-            = f.input :email
-          .row.collapse
-            = f.input :first_name
-          .row.collapse
-            = f.input :last_name
-          .row.collapse
-            = f.input :password
-          .row.collapse
-            = f.input :password_confirmation
-            = f.button :submit
-          p
-            | Already have an account?
-            == link_to "Login Here ", sessions_login_user_path
+p User
+= simple_form_for @user do |f|
+  = f.input :email
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :password
+  = f.input :password_confirmation
+  = f.button :submit
+p
+  | Already have an account?
+  == link_to "Login Here ", sessions_login_user_path

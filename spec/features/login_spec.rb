@@ -25,8 +25,8 @@ feature 'User authentication' do
     click_link 'User Login'
     expect(page).to_not have_content('Create User')
     fill_in 'Email', with: @user.email
-    fill_in 'Password', with: '123'
+    fill_in 'Password', with: '2'
     click_button 'Log in'
-    expect(page).to have_content("you are logged in as a admin")
+    expect(page).to have_content("you are logged in")
     end
 end

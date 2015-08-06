@@ -7,6 +7,23 @@ module HomeHelper
     current_user or current_chef
   end
 
+  # def current_user
+  #   @current_user ||= User.find_by(id: session[:user_id])
+  # end
+  #
+  # def current_chef
+  #   @current_chef ||= Chef.find_by(id: session[:chef_id])
+  # end
+  # def is_logged_in
+  #   current_chef || current_user
+  # end
+  # def is_admin?
+  #   (current_user && current_user.email == 'admin@admin.com') ? true : false
+  # end
+  # def chef_active?
+  #   current_chef.active?
+  # end
+
   # def active_if_current_page(path)  ##### , class: (active_if_current_page(new_user_path)
   #   current_page?(path) ? 'active' : ''
   # end

@@ -1,21 +1,11 @@
-.row
-  .form-wrapper
-    .large-6.columns
-      .signup-panel
-        p.welcome User Sign In
-        = form_tag sessions_login_user_path do |f|
-          row.collapse
-            .small-10.columns
-              = label_tag :email
-              = text_field_tag :email
-          .row.collapse
-          .row.collapse
-            .small-10.columns
-              = label_tag :password
-              = password_field_tag :password
-          .row.collapse
-            .small-10.columns
-              = submit_tag 'Log in'
-          p
-            | Don't have an account?
-            == link_to "Sign Up Here ", new_user_path
+
+p User Sign In
+= form_tag sessions_login_user_path do |f|
+  = label_tag :email
+  = text_field_tag :email
+  = label_tag :password
+  = password_field_tag :password
+  = submit_tag 'Log in'
+p
+  | Don't have an account?
+  == link_to "Sign Up Here ", new_chef_path

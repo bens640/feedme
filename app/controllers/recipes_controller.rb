@@ -1,10 +1,12 @@
 class RecipesController < ApplicationController
   before_action :is_admin?, except: :index
+
   def index
     @recipes = Recipe.all.order('updated_at DESC')
   end
   def new
     @recipe = Recipe.new
+    @image = params[:file]
   end
   def create
     @recipe = Recipe.new recipe_params
@@ -14,6 +16,9 @@ class RecipesController < ApplicationController
     else
       redirect_to :back, flash:{notice: 'there was an error'}
     end
+  end
+  def show
+    @image = params[:file]
   end
   def edit
     @recipe = Recipe.find(params[:id])
@@ -37,7 +42,7 @@ class RecipesController < ApplicationController
   def recipe_params
     params.
         require(:recipe).
-        permit(:title, :ingredients, :recipe)
+        permit(:title, :ingredients, :recipe, :image)
   end
 
 end
