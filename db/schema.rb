@@ -42,10 +42,6 @@ ActiveRecord::Schema.define(version: 20150805232041) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "messages", ["chef_id"], name: "index_messages_on_chef_id", using: :btree
-  add_index "messages", ["reservation_id"], name: "index_messages_on_reservation_id", using: :btree
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
-
   create_table "recipes", force: :cascade do |t|
     t.string   "title",       null: false
     t.string   "ingredients", null: false
@@ -72,9 +68,6 @@ ActiveRecord::Schema.define(version: 20150805232041) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "reservations", ["chef_id"], name: "index_reservations_on_chef_id", using: :btree
-  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",        null: false
