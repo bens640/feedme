@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   patch 'chefs/:id' => 'chefs#update'
   put 'chefs/:id' => 'chefs#update'
   delete 'chefs/:id' => 'chefs#destroy'
+  get 'chefs/:id' => 'chefs#toggle', as: 'toggle_active_chef'
 
   get 'chefs/:id' => 'chefs#toggle', as: 'toggle_active_chef'
 

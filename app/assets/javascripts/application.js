@@ -17,31 +17,25 @@
 
 
 function ready() {
-    $(document).ready(function () {
-        $("#hamburger").click(function () {
-            $("#menu-list").toggleClass("opacity");
-            $(".slice").toggleClass("transform");
-        });
 
-
-      $("#reservation_plates").on("change", function(e){
-        var price = 20;
-        var multiplier = $(this).val();
-        var priceToDisplay = '$' + String(price * multiplier) + '.00';
-        $('#payment').text(priceToDisplay);
-      });
-
+  $(document).ready(function () {
+    $('button span').text("$20.00 - Pay with card");
+    $("#hamburger").click(function () {
+        $("#menu-list").toggleClass("opacity");
+        $(".slice").toggleClass("transform");
     });
 
-
-
-
-    $('#reservation_plates').click(function(){
-      var amount_charge = parseInt($('#reservation_plates').val())*2000+'';
-      $('.stripe-button').attr('data-amount', amount_charge);
+    $("#reservation_plates").on("change", function(e){
+      var price = 20;
+      var multiplier = $(this).val();
+      var priceToDisplay = '$' + String(price * multiplier) + '.00';
+      $('#payment').text(priceToDisplay);
+      $('button span').text(priceToDisplay + " - Pay with card");
     });
-  //(parseInt($('#reservation_plates'))*20000)+""
-
-
+    $('.stripe-button-el').click(function(){
+      console.log('click');
+      event.preventDefault();
+    });
+  });
 }
 $(document).on('ready page:load', ready);

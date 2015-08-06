@@ -26,7 +26,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :state
       t.string :zip
       t.string :phone
-      t.boolean :active?
+      t.boolean :active
       t.timestamps null: false
     end
     create_table :reservations do |t|
@@ -36,6 +36,8 @@ class CreateUsers < ActiveRecord::Migration
       t.text :details
       t.date :date
       t.integer :plates
+      t.boolean :closed
+      t.boolean :canceled
       t.string :time, null:false
       t.string :address, null:false
       t.string :address2
