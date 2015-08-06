@@ -1,13 +1,11 @@
 class ReservationsController < ApplicationController
-  before_action :set_reservations, only: [ :current_reservation_user, :my_reservations_user]
   before_action :set_user, only: [:new, :create]
   before_action :require_logged_in
-  skip_before_filter :verify_authenticity_token
 
   include ApplicationHelper
   def index
 
-    @chef_reservations = Reservation.chef(current_chef.id)#where(chef_id:current_chef.id)
+    @chef_reservations = Reservation.chef_reservations(current_chef)#where(chef_id:current_chef.id)
     @available_reservations = Reservation.available
     @chef = Chef.find(session[:chef_id])
   end
@@ -30,26 +28,23 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = current_user.reservations.new reservation_params
+    @reservation = current_user.reservations.new reservation_params.except(:stripeToken, :amount)
 
     # if @reservation.valid?
     #   redirect_to new_charge_path(@reservation), flash:{notice: 'reservation valid. make payment'}
 
     if @reservation.save
-      # byebug
-      # @amount = 2000 * @reservation.plates.to_i
-      #
-      # customer = Stripe::Customer.create(
-      #   :email => 'example@stripe.com',
-      #   :card  => params[:stripeToken]
-      # )
-      #
-      # charge = Stripe::Charge.create(
-      #   :customer    => customer.id,
-      #   :amount      => @amount,
-      #   :description => 'Rails Stripe customer',
-      #   :currency    => 'usd'
-      # )
+      customer = Stripe::Customer.create(
+        :email => reservation_params[:stripeEmail],
+        :card  => reservation_params[:stripeToken]
+      )
+
+      Stripe::Charge.create(
+        :customer    => customer.id,
+        :amount      => reservation_params[:amount],
+        :description => 'Rails Stripe customer',
+        :currency    => 'usd'
+      )
       redirect_to @user, flash:{notice: 'Created reservation'}
     else
       redirect_to :back, flash:{notice:' You were not charged please make sure required fields are filled'}
@@ -72,11 +67,7 @@ class ReservationsController < ApplicationController
   def reservation_params
     params.
         require(:reservation).
-        permit(:details, :date, :time, :address, :address2, :city, :state, :zip, :phone, :recipe_id, :plates)
-  end
-
-  def set_reservations
-    @user_reservations = Reservation.where(user_id:current_user.id)
+        permit(:details, :date, :stripeEmail, :stripeToken, :amount, :time, :address, :address2, :city, :state, :zip, :phone, :recipe_id, :plates)
   end
   def set_user
     @user = current_user

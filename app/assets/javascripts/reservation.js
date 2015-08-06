@@ -47,7 +47,7 @@ payAction = function(){
       var zip = $("#reservation_zip").val();
       var phone = $("#reservation_phone").val();
       var postData = {reservation:
-        {amount:total,recipe_id:recipe,details:details,time:time,date:date,address:address,address2:address2,city:city,state:state,zip:zip,phone:phone}
+        {amount:total,recipe_id:recipe,stripeToken:token.id,details:details,time:time,date:date,address:address,address2:address2,city:city,state:state,zip:zip,phone:phone}
       };
       console.log('beging ajax');
       console.log(postData);
@@ -66,7 +66,7 @@ payAction = function(){
           $("#reservation_zip").val("");
           $("#reservation_phone").val("");
           alert("reservation Complete! You will receive confirmation email in few minutes.");
-          window.location.reload(true);
+          window.location = "/";
         },
         error: function(request, error) {
           console.log(arguments);
@@ -83,7 +83,7 @@ payAction = function(){
       console.log('Second check');
       return false;
     }
-    var total = parseInt($('#reservation_plates').val())*2000+'';
+    var total = parseInt($('#reservation_plates').val())*2000;
 
     handler.open({
       name: 'Cookio',
@@ -94,5 +94,5 @@ payAction = function(){
   });
 }
 
-$(document).ready(payAction);
+$(payAction);
 $(document).on('page:load', payAction);

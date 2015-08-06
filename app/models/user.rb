@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
             allow_nil: true
   # validates :password_digest, confirmation: true
   # validates :password_digest_confirmation, presence: true
+  def self.auth_change(user,user_params)
+    find_by(email: user[:email]).
+        try(:authenticate, user_params[:old_password])
+  end
   def name
     [first_name, last_name].join " "
   end

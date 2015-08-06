@@ -27,8 +27,8 @@ class ChefsController < ApplicationController
   end
 
   def show
-    @chef_confirmations = Reservation.where(chef_id:current_chef.id)
-    @chef_reservations = Reservation.where(chef_id:nil)
+    @chef_confirmations = Reservation.where(chef_id:current_chef.id).includes(:recipe)
+    @chef_reservations = Reservation.where(chef_id:nil).includes(:recipe)
     @profile = @chef
   end
   def update

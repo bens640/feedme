@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new user_params
+    @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
       # UserMailer.welcome_email(@user).deliver
@@ -24,15 +24,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user_reservations = Reservation.where(user_id:current_user.id)
+    @user_reservations = Reservation.user_reservations(current_user)
     @user = current_user
     @profile = @user
   end
 
   def update
-    @user = User.
-        find_by(email: @user[:email]).
-        try(:authenticate, user_params[:old_password])
+    @user = User.auth_change(@user,user_params)
+
     if @user
       # new_params = user_params.reject{|a| a==""}
       if @user.update(user_params.except(:old_password))

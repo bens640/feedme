@@ -20,7 +20,18 @@ class Reservation < ActiveRecord::Base
   LIST_TIME= %w[10:00am 11:00am 12:00pm
               1:00pm 2:00pm 3:00pm 4:00pm 5:00pm 6:00pm 7:00pm 8:00pm 9:00pm 10:00pm]
   PLATE_NUMS= [1,2,3,4,5,6,7,8]
-
+  def self.user_reservations(user)
+    where(user_id:user.id).includes(:recipe, :user)
+  end
+  def self.chef_reservations(chef)
+    chef(chef.id).includes(:recipe)
+  end
+  def helpers
+    ActionController::Base
+  end
+  # def current_user
+  #   @current_user ||= User.find_by(id: session[:user_id])
+  # end
   #scope :recent, where('created_at < ?', 3.days.ago)
   def init
     self.closed  = false if (self.has_attribute? :closed) && self.closed.nil?          #will set the default value only if it's nil
