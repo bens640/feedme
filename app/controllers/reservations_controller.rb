@@ -15,6 +15,7 @@ class ReservationsController < ApplicationController
   def new
     @reservation = Reservation.new
     @recipes = Recipe.all
+    @selected = params[:format]
   end
   def show
     if current_user

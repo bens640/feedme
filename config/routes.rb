@@ -42,7 +42,6 @@ Rails.application.routes.draw do
   delete 'chefs/:id' => 'chefs#destroy'
   get 'chefs/:id' => 'chefs#toggle', as: 'toggle_active_chef'
 
-  get 'chefs/:id' => 'chefs#toggle', as: 'toggle_active_chef'
 
   get '/logout', to: 'sessions#destroy'
 
