@@ -41,5 +41,7 @@ function ready() {
       $('.stripe-button').attr('data-amount', amount_charge);
     });
   //(parseInt($('#reservation_plates'))*20000)+""
+
+
 }
 $(document).on('ready page:load', ready);
