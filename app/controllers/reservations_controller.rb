@@ -52,7 +52,7 @@ class ReservationsController < ApplicationController
 
       redirect_to @user, flash:{notice: 'Created reservation'}
     else
-      redirect_to :back, flash:{notice:'Make sure required fields are filled'}
+      redirect_to :back, flash:{notice:' You were not charged please make sure required fields are filled'}
     end
   end
   def update
