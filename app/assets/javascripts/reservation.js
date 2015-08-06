@@ -92,7 +92,6 @@ payAction = function(){
       image: '/msb-red.png'
     });
   });
-}
+};
 
-$(payAction);
-$(document).on('page:load', payAction);
+$(document).on('ready page:load', payAction);

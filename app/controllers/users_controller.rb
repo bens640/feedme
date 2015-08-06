@@ -29,16 +29,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.
-        find_by(email: @user[:email]).
-        try(:authenticate, user_params[:old_password])
+    @user = User.auth_change(@user,user_params)
     if @user
-      # new_params = user_params.reject{|a| a==""}
       if @user.update_attributes(user_params.except(:old_password))
-        byebug
         redirect_to user_path, notice: 'User was successfully updated.'
       else
-        byebug
         redirect_to :back, notice: 'something went wrong'
       end
     else

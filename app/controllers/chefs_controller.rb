@@ -27,7 +27,7 @@ class ChefsController < ApplicationController
   end
 
   def show
-    @chef_confirmations = Reservation.chef
+    @chef_confirmations = Reservation.chef(current_chef)
     @chef_reservations = Reservation.available
     @profile = @chef
   end
