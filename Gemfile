@@ -38,7 +38,7 @@ gem 'simple_form'
 gem 'pg'
 gem 'faker'
 gem 'carrierwave'
-gem 'fog-aws'
+gem 'fog'
 # stripe gem for payment
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
