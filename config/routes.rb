@@ -33,7 +33,6 @@ Rails.application.routes.draw do
 
 
   post 'chefs' => 'chefs#create'
-  get 'chefs/:id' => 'chefs#toggle', as: 'toggle_active_chef'
   get 'chefs' => 'chefs#index', as: 'chefs_admin'
   get 'chefs/new' => 'chefs#new', as: 'new_chef'
   get 'chefs/:id/account' => 'chefs#show', as: 'chef'
@@ -41,6 +40,7 @@ Rails.application.routes.draw do
   patch 'chefs/:id' => 'chefs#update'
   put 'chefs/:id' => 'chefs#update'
   delete 'chefs/:id' => 'chefs#destroy'
+  get 'chefs/:id' => 'chefs#toggle', as: 'toggle_active_chef'
 
 
   get '/logout', to: 'sessions#destroy'

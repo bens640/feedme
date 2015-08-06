@@ -2,9 +2,10 @@ class ChefsController < ApplicationController
   before_action :set_chef, only: [:edit, :show, :update]
   before_action :require_chef, only:[:edit,:show,:update]
   before_action :is_admin?, only: [:index,:toggle]
+
   def index
-    @chefs_inactive = Chef.where(active?:false)
-    @chefs_active = Chef.where(active?:true)
+    @chefs_inactive = Chef.where(active:false)
+    @chefs_active = Chef.where(active:true)
   end
   def new
     @chef = Chef.new
@@ -46,7 +47,7 @@ class ChefsController < ApplicationController
   end
   def toggle
     @chef = Chef.find(chef_id_params[:id])
-    @chef.toggle(:active?)
+    @chef.active = !@chef.active
     @chef.save
     redirect_to :back, notice: "Chef's availability has changed"
   end

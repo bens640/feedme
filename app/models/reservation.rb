@@ -4,6 +4,7 @@ class Reservation < ActiveRecord::Base
   belongs_to :chef
   validates :time, :address, :city, :state, :zip, :phone, presence: true
   has_many :messages, dependent: :destroy
+  after_initialize :init
   # def self.info
   #   Hash[*Reservation.available.all.map{|b| [b.user.first_name, b.user.city]}.flatten]
   # end
@@ -21,6 +22,8 @@ class Reservation < ActiveRecord::Base
   PLATE_NUMS= [1,2,3,4,5,6,7,8]
 
   #scope :recent, where('created_at < ?', 3.days.ago)
-
+  def init
+    self.closed  = false if (self.has_attribute? :closed) && self.closed.nil?          #will set the default value only if it's nil
+    self.canceled = false if (self.has_attribute? :canceled) && self.canceled.nil?
+  end
 end
-

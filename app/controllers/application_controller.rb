@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
       false
     end
     def chef_active?
-      current_chef.active?
+      current_chef.active
     end
     def is_admin?
       (current_user && current_user.email == 'admin@admin.com') ? true : false
