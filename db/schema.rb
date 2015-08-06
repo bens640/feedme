@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150721043832) do
     t.string   "state"
     t.string   "zip"
     t.string   "phone"
+    t.boolean  "active?"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

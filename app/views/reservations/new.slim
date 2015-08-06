@@ -37,9 +37,9 @@
           .row.collapse
             .small-10.columns
               = f.input :phone, :required => true, input_html: { value: @user.phone }
+          /.row.collapse
+          /  .small-10.columns
+          /    script.stripe-button data-amount="300" data-description=("Pay for Reservation") data-key="#{Rails.configuration.stripe[:publishable_key]}" src="https://checkout.stripe.com/checkout.js"
           .row.collapse
             .small-10.columns
-              script.stripe-button data-amount="300" data-description=("Pay for Reservation") data-key="#{Rails.configuration.stripe[:publishable_key]}" src="https://checkout.stripe.com/checkout.js"
-          .row.collapse
-            .small-10.columns
-              = f.button :submit
+              = f.button :submit, 'next'

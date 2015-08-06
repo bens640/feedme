@@ -27,25 +27,10 @@ class ReservationsController < ApplicationController
     @new_reservations_message = Message.new
   end
 
-  def current_reservation_user
-  end
-
-  def current_reservation_chef
-    @chef_reservations = Reservation.where(chef_id:current_chef.id)
-  end
-
-  def my_reservations_user
-  end
-
-  def my_reservations_chef
-    @chef_reservations = Reservation.where(chef_id:current_chef.id)
-  end
-
   def create
     @reservation = current_user.reservations.new reservation_params
-
-    if @reservation.save
-      redirect_to @user, flash:{notice: 'Created reservation'}
+    if @reservation.valid?
+      redirect_to new_charge_path(@reservation), flash:{notice: 'reservation valid. make payment'}
     else
       redirect_to :back, flash:{notice:'Make sure required fields are filled'}
     end

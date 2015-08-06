@@ -30,6 +30,9 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
       false
     end
+    def chef_active?
+      current_chef.active?
+    end
     def is_admin?
       (current_user && current_user.email == 'admin@admin.com') ? true : false
     end
