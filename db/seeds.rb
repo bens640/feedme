@@ -99,6 +99,7 @@ reservations = 1
                   state: 'FL',
                   zip: zipCity[0].to_s,
                   phone: get_phone(n+1000),
+                  active?: true,
                   password_digest:BCrypt::Password.create(n))
   if n % reservation_factor == 0
     reservations += 1

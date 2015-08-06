@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User authentication' do
+feature 'User Logs in and creates reservation' do
   background do
     @user = create(:user)
   end
@@ -9,9 +9,9 @@ feature 'User authentication' do
     click_link 'User Login'
     expect(page).to_not have_content('Create User')
     fill_in 'Email', with: @user.email
-    fill_in 'Password', with: '123'
+    fill_in 'Password', with: '2'
     click_button 'Log in'
-    expect(page).to have_content("you are logged in as a admin")
+    expect(page).to have_content("you are logged in")
     fill_in 'Details', with: "Ha look at me now."
     select '2011', from: 'reservation[date(1i)]'
     select 'January', from: 'reservation[date(2i)]'

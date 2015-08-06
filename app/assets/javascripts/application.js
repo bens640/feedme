@@ -22,7 +22,19 @@ function ready() {
             $("#menu-list").toggleClass("opacity");
             $(".slice").toggleClass("transform");
         });
+
+
+      $("#reservation_plates").on("change", function(e){
+        var price = 20;
+        var multiplier = $(this).val();
+        var priceToDisplay = '$' + String(price * multiplier) + '.00';
+        $('#payment').text(priceToDisplay);
+      });
+
     });
+
+
+
 
     $('#reservation_plates').click(function(){
       var amount_charge = parseInt($('#reservation_plates').val())*2000+'';

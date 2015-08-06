@@ -26,11 +26,12 @@ class CreateUsers < ActiveRecord::Migration
       t.string :state
       t.string :zip
       t.string :phone
+      t.boolean :active?
       t.timestamps null: false
     end
     create_table :reservations do |t|
-      t.belongs_to :user, index: true
-      t.belongs_to :chef, index: true
+      t.belongs_to :user, show: true
+      t.belongs_to :chef, show: true
       t.belongs_to :recipe
       t.text :details
       t.date :date
@@ -45,9 +46,9 @@ class CreateUsers < ActiveRecord::Migration
       t.timestamps null: false
     end
     create_table :messages do |t|
-        t.belongs_to :user, index: true
-        t.belongs_to :chef, index: true
-        t.belongs_to :reservation, index: true, null:false
+        t.belongs_to :user, show: true
+        t.belongs_to :chef, show: true
+        t.belongs_to :reservation, show: true, null:false
         t.string :subject, null:false
         t.text :message, null:false
         t.timestamps null: false

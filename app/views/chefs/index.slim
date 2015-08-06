@@ -1,0 +1,14 @@
+.chefs
+  - if @chefs_inactive.count > 0
+    h1 inactive chefs
+    .chefs-inactive
+      - @chefs_inactive.each do |chef|
+        = div_for(chef, class: 'inactive_chef') do
+          h3 Chef: #{chef.first_name}
+          = link_to "toggle active", toggle_active_chef_path(chef.id)
+.chefs-active
+  h1 active chefs
+  - @chefs_active.each do |chef|
+    = div_for(chef, class: 'active_chefs') do
+      h3 Chef: #{chef.first_name}
+      = link_to "toggle active", toggle_active_chef_path(chef.id)

@@ -12,6 +12,19 @@ FactoryGirl.define do
     state  'FL'
     zip  '33132'
     phone  '555-555-5555'
+    password_digest {BCrypt::Password.create(2)}
+    id 2
+  end
+  factory :admin do
+    first_name {Faker::Name.first_name}
+    last_name {Faker::Name.last_name}
+    email {Faker::Internet.email}
+    address '123 main st'
+    address2 'apt 123'
+    city  'miami'
+    state  'FL'
+    zip  '33132'
+    phone  '555-555-5555'
     password_digest {BCrypt::Password.create(123)}
     id 1
   end
