@@ -7,8 +7,7 @@ script src="https://checkout.stripe.com/checkout.js"
         = simple_form_for @reservation do |f|
           .row.collapse
             .small-10.columns
-              = f.collection_select(:recipe_id, @recipes, :id, :title)
-          .row.collapse
+              = f.collection_select :recipe_id, @recipes, :id, :title,  selected: params[:format]
             .small-10.columns
               = f.input :details
           .row.collapse
