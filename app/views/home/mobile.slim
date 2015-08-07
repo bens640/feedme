@@ -1,5 +1,26 @@
-#card
-  .front
-    | Front content
-  .back
-    | Back content
+- @reservations.each do |r|
+  .wrapper.cards
+    .container
+      .card
+        .front
+          h2 #{r.recipe.title} Meal
+        .back
+          .content
+            h3.cardTitle #{r.recipe.title} Meal
+            p Customer: #{r.user.name}
+            p Date: #{r.date}
+            p Time: #{r.time}
+            p Location: #{r.address + " " + r.address2}
+            p Number of plates: #{r.plates}
+            p Details: #{r.details}
+            br /
+            .reserve
+              - if current_chef && r.chef_id != current_chef.id
+                = link_to "reserve", r, method: :patch
+            h3 Messages:
+            /= render 'reservations/message'
+            /- if r.chef_id
+            /  = simple_form_for ([r, @new_reservations_message]) do |f|
+            /    = f.input :subject
+            /    = f.input :message
+            /    = f.submit

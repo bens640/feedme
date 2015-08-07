@@ -6,6 +6,9 @@ ready = function() {
         $( "#tabs" ).tabs();
 
     });
+    $('.card').click(function(){
+        $(this).toggleClass('flipped');
+    });
 };
 
 $(document).ready(ready);
