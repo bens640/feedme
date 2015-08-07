@@ -11,13 +11,58 @@ class Reservation < ActiveRecord::Base
   # def self.available
   #   where(chef_id:nil).order('date ASC')
   # end
-  scope :available, ->{where(chef_id:nil).order('date ASC')}
-  scope :chef, ->(chef) { where(chef_id:chef.id).order('date ASC').includes(:recipe, :user)}
-  scope :user, ->(user) { where(user_id:user.id).order('date ASC').includes(:recipe, :user)}
+  scope :available, ->{
+      where(chef_id:nil).
+      where(canceled:false).
+      where('date > ?', Date.yesterday).
+      order('date ASC').
+      includes(:recipe, :user)}
+
+  scope :chef, ->(chef) {
+      where(chef_id:chef.id).
+      where(canceled:false).
+      where('date > ?', Date.yesterday).
+      order('date ASC').
+      includes(:recipe, :user)}
+
+  scope :user, ->(user) {
+      where(user_id:user.id).
+      where(canceled:false).
+      where('date > ?', Date.yesterday).
+      order('date ASC').
+      includes(:recipe, :user)}
+
+  scope :user_old, ->(user) {
+      where(user_id:user.id).
+      where(canceled:false).
+      where('date < ?', Date.today).
+      order('date DESC').
+      includes(:recipe, :user)}
+
+  scope :chef_old, ->(chef) {
+      where(chef_id:chef.id).
+      where(canceled:false).
+      where('date < ?', Date.today).
+      order('date DESC').
+      includes(:recipe, :user)}
+
+  # def self.is_nil_or_user_or_chef(current_chef, current_user,params)
+  #   find(params).chef_id == nil || Reservation.find(params).user_id == current_user.id || Reservation.find(params).chef_id == current_chef.id
+  # end
+
+
+
+
+
+
+
+
+
+  # scope :past, ->(user) { where(user_id:user.id).}
   # scope :chef_reservations, ->(chef) { where(chef_id:chef.id).order('date ASC').includes(:recipe, :user)}
   # scope :user_reservations, ->(user) { where(user_id:user.id).order('date ASC').includes(:recipe, :user)}
 
-  # scope :created_before, ->(time) { where("created_at < ?", time) }
+  # scope :created_before, ->(time) { where("cr eated_at < ?", time) }
   # def self.chef(chef)
   #   where(chef_id:chef).order('date ASC')
   # end

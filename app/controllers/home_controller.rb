@@ -5,9 +5,13 @@ class HomeController < ApplicationController
   end
   private
   def set_user
-    @user = current_user
+    if current_user
+      @user ||= current_user
+    end
   end
   def set_chef
-    @chef = current_chef
+    if current_chef
+      @chef ||= current_chef
+    end
   end
 end

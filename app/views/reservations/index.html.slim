@@ -1,18 +1,18 @@
 .chef-reservations
   - if @chef_reservations.count > 0
-  h1 My Reservations
-  .chef-reservations-1
-    - @chef_reservations.each do |reservation|
-      = div_for(reservation, class: 'my_reservation') do
-        h3 User: #{reservation.user.first_name}
-        h3 Date: #{reservation.date}
-        h3 Time: #{reservation.time}
-        h3 Details:
-        = reservation.details
-        h3 Recipe:
-        = reservation.recipe.title
-        br /
-        = link_to "show", reservation
+    h1 My Reservations
+    .chef-reservations-1
+      - @chef_reservations.each do |reservation|
+        = div_for(reservation, class: 'my_reservation') do
+          h3 User: #{reservation.user.first_name}
+          h3 Date: #{reservation.date}
+          h3 Time: #{reservation.time}
+          h3 Details:
+          = reservation.details
+          h3 Recipe:
+          = reservation.recipe.title
+          br /
+          = link_to "show", reservation
 .current-reservations
   h1 Show available reservations
   - @available_reservations.each do |reservation|

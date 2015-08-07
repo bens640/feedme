@@ -1,17 +1,19 @@
 h1 My Account
+= link_to 'Edit Profile', edit_user_path(@user)
 h2 Hi #{@user.first_name} User
 
 /=> link_to 'New Reservation', new_reservation_path
 /= link_to 'Edit Profile', edit_user_path(@user)
-
-#tabs
-  ul
-    li
-      a href="#fragment-1"  Reservations
-    li
-      a href="#fragment-2"  Profile
-
-  #fragment-1
-    = render 'reservations/current_reservations_user'
-  #fragment-2
-    = render 'home/profile'
+= render 'reservations/current_reservations_user'
+= render 'reservations/old_reservations_user'
+/#tabs
+/  ul
+/    li
+/      a href="#fragment-1"  Reservations
+/    li
+/      a href="#fragment-2"  Profile
+/
+/  #fragment-1
+/
+/  #fragment-2
+/    = render 'home/profile'

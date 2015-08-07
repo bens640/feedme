@@ -1,0 +1,11 @@
+h1 My Old Reservations
+- @user_old_reservations.each do |reservation|
+  = div_for(reservation, class: 'reservation') do
+    h3 User:  #{reservation.user.first_name}
+    h3 Date: #{reservation.date}
+    h3 Time: #{reservation.time}
+    h3 Details: #{reservation.details}
+    h3 Recipe: #{reservation.recipe.title}
+    br /
+    = link_to 'Show', reservation
+    = link_to "Remove Reservation", reservation, method: :delete, data: {confirm: "Are you sure you would like to delete this Reservation?"}

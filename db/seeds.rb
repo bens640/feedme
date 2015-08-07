@@ -8,8 +8,8 @@
 # require 'bcrypt'
 include ActionView::Helpers
 require './db/zip_city'
-num_users = 100
-num_reservations = 30
+num_users = 600
+num_reservations = 600
 reservation_factor = num_users/num_reservations
 def get_diet
   diet = []
@@ -33,7 +33,7 @@ def get_allergies
 end
 def get_date
   year = 2015
-  month = rand(2)+9
+  month = rand(4)+5
   if [4,6,9,11].include?(month)
     days = 30
   elsif month == 2
@@ -71,6 +71,7 @@ User.create(first_name: 'admin',
             password_digest: BCrypt::Password.create('admin'))
 reservations = 1
 (1..num_users).each do |n|
+  date = get_date
   zipCity = zip_city
   a = Faker::Address.street_address
   a2 = secondary_address(n)
@@ -106,14 +107,12 @@ reservations = 1
     r = Reservation.create(user_id:u.id,
                          recipe_id:rand(10)+1,
                          details:Faker::Lorem.sentence,
-                         date:get_date,
+                         date:date,
                          time:get_time,
                          address:a,
                          address2:a2,
                          city:city,
                          state:'FL',
-                         # closed?:false,
-                         # canceled?:false,
                          zip:zip,
                          phone:phone)
     if reservations % 2 == 0
@@ -131,6 +130,21 @@ reservations = 1
                              reservation_id:r.id,
                              subject:Faker::Lorem.sentence,
                              message:Faker::Hacker.say_something_smart)
+        end
+      end
+    else
+      if date < Date.today
+        if n % 4 == 0
+          r.canceled = true
+          r.save
+        else
+          r.chef_id = c.id
+          r.save
+        end
+      else
+        if n % 10 == 0
+          r.canceled = true
+          r.save
         end
       end
     end

@@ -66,7 +66,7 @@ payAction = function(){
           $("#reservation_zip").val("");
           $("#reservation_phone").val("");
           alert("reservation Complete! You will receive confirmation email in few minutes.");
-          window.location = "/";
+          window.location.reload(true);
         },
         error: function(request, error) {
           console.log(arguments);
@@ -92,6 +92,7 @@ payAction = function(){
       image: '/msb-red.png'
     });
   });
-};
+}
 
-$(document).on('ready page:load', payAction);
+$(document).ready(payAction);
+$(document).on('page:load', payAction);
