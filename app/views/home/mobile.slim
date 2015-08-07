@@ -1,3 +1,24 @@
+.wrapper.cards
+  .container
+    .card
+      .front
+        h2 Roast Chicken Meal
+      .back
+        .content
+          h3.cardTitle Roast Chicken Dinner
+          p User: Ben Shelomovitz
+          p Date: 12/2/2018
+          p Time: 8:00pm
+          p Location: 123 Center Way, Miami FL 33123
+          p Number of plates: 3
+          p Details: I would like the meal to be kosher
+          p Messages:
+          p Chef: sure
+          p Ben: Thanks!
+          p Chef: sure
+          p Ben: Thanks!
+
+
 - @reservations.each do |r|
   .wrapper.cards
     .container
@@ -13,14 +34,15 @@
             p Location: #{r.address + " " + r.address2}
             p Number of plates: #{r.plates}
             p Details: #{r.details}
-            br /
             .reserve
-              - if current_chef && r.chef_id != current_chef.id
-                = link_to "reserve", r, method: :patch
-            h3 Messages:
+            /  - if current_chef && r.chef_id != current_chef.id
+            /    = link_to "reserve", r, method: :patch
+            /h3 Messages:
             /= render 'reservations/message'
             /- if r.chef_id
             /  = simple_form_for ([r, @new_reservations_message]) do |f|
             /    = f.input :subject
             /    = f.input :message
             /    = f.submit
+
+

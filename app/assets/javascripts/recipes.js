@@ -2,9 +2,10 @@
 var ready;
 ready = function() {
 
-    $( "#tabs" ).tabs();
 
-
+    $('.card').hover(function(){
+        $(this).toggleClass('flipped');
+    });
 };
 
 $(ready);
