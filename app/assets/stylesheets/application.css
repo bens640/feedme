@@ -12,7 +12,10 @@
 
  *= require_tree .
  *= require_self
- */
+ *= require foundation_and_overrides
+ *= require_tree .
+/* Add imports of custom sass/scss files here */
+
 html{
     width: 100%;
 }

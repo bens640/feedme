@@ -1,46 +1,42 @@
 script src="https://checkout.stripe.com/checkout.js"
-.row
-  .form-wrapper
-    .large-6.columns
-      .signup-panel
-        p.welcome New Reservation
-        = simple_form_for @reservation do |f|
-          .row.collapse
-            .small-10.columns
-              = f.collection_select :recipe_id, @recipes, :id, :title,  selected: params[:format]
-            .small-10.columns
-              = f.input :details
-          .row.collapse
-            .small-10.columns
-              = f.select :plates, options_for_select(Reservation::PLATE_NUMS)
-          .row.collapse
-            .small-10.columns
-              = f.input :date
-          .row.collapse
-            .small-10.columns
-              = f.select :time, options_for_select(Reservation::LIST_TIME)
-          .row.collapse
-            .small-10.columns
-              = f.input :address, :required => true, input_html: { value: @user.address }
-          .row.collapse
-            .small-10.columns
-              = f.input :address2
-          .row.collapse
-            .small-10.columns
-              = f.input :city, :required => true, input_html: { value: @user.city }
-          .row.collapse
-            .small-10.columns
-              = f.input :state, :required => true, input_html: { value: @user.state }
-          .row.collapse
-            .small-10.columns
-              = f.input :zip, :required => true, input_html: { value: @user.zip }
-          .row.collapse
-            .small-10.columns
-              = f.input :phone, :required => true, input_html: { value: @user.phone }
-          .row.collapse
-            .small-10.columns
-              h1#payment $20.00
-          .row.collapse
-            .small-10.columns
-              <button style="display: block;" class="confirm btn btn-xl profile-continue-btn" id="continue">Continue</button>
+
+
+p.welcome New Reservation
+.form
+  = simple_form_for @reservation do |f|
+    h4.names select recipes
+    .field
+      = f.collection_select :recipe_id, @recipes, :id, :title,  selected: params[:format], label: false      
+    h4.names details
+    .field
+      = f.input :details, label: false      
+    h4.names plates
+    .field
+      = f.select :plates, options_for_select(Reservation::PLATE_NUMS), label: false  
+    h4.names date
+    .field
+      = f.input :date, label: false  
+    h4.names time
+    .field
+      = f.select :time, options_for_select(Reservation::LIST_TIME), label: false    
+    h4.names address
+    .field
+      = f.input :address, :required => true, input_html: { value: @user.address }, label: false
+    h4.names address2
+    .field
+      = f.input :address2, label: false
+    h4.names city
+    .field  
+      = f.input :city, :required => true, input_html: { value: @user.city }, label: false  
+    h4.names state
+    .field
+      = f.input :state, :required => true, input_html: { value: @user.state }, label: false
+    h4.names zip
+    .field
+      = f.input :zip, :required => true, input_html: { value: @user.zip }, label: false
+    h4.names phone
+    .field
+      = f.input :phone, :required => true, input_html: { value: @user.phone }, label: false
+    h1#payment $20.00
+  <button style="display: block;" class="confirm btn btn-xl profile-continue-btn" id="continue">Continue</button>
               /script.stripe-button data-amount='' data-description=("Pay for Reservation") data-key="#{Rails.configuration.stripe[:publishable_key]}" src="https://checkout.stripe.com/checkout.js"

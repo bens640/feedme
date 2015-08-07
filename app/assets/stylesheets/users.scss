@@ -8,36 +8,3 @@ $accent-color: #40C0CB;
 $neutral-color: #F9F2E7;
 $secondary-color: #AEE239;
 $secondary-accent: #8FBE00;
-
-.reservation{
-  width: auto;
-  padding: 2%;
-  border: solid black 1px;
-  float: left;
-  margin: .5%;
-  @media (max-width: 800px) {
-	background-color: #00A8C6;
-	width: 2%;
-  }
-}
-.show-reservation{
-  width: auto;
-  padding: 2%;
-  border: solid black 1px;
-  float: left;
-  margin: 0 auto;
-}
-.become-a-chef{
-  border: solid;
-}
-.chef-reservations{
-  width: 100%;
-  border: solid;
-  display: inline-block;
-}
-
-.current-reservation{
-  width: 100%;
-  border: solid;
-  display: inline-block;
-}

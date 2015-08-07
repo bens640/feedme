@@ -14,7 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
+//= require foundation
+$(document).foundation();
 
 function ready() {
   $('button span').text("$20.00 - Pay with card");

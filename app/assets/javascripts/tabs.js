@@ -1,12 +1,11 @@
-
 var ready;
 ready = function() {
 
-    $(function() {
-        $( "#tabs" ).tabs();
 
-    });
+  $("#tabs").tabs();
+
+
 };
 
-$(document).ready(ready);
+$ready(ready);
 $(document).on('page:load', ready);
