@@ -1,6 +1,10 @@
-
 p User Sign In
-= render 'sessions/user_login'
+= form_tag sessions_login_user_path do |f|
+      = label_tag :email
+      = text_field_tag :email
+      = label_tag :password
+      = password_field_tag :password
+      = submit_tag 'Log in'
 p
   | Don't have an account?
   == link_to "Sign Up Here ", new_chef_path

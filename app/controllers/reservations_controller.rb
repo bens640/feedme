@@ -4,6 +4,7 @@ class ReservationsController < ApplicationController
   before_action :require_chef, only: :index
   before_action :belongs_to_or_nil_or_admin, only: :show
   before_action :belongs_to_user_or_admin, only: :destroy
+  skip_before_filter :verify_authenticity_token
 
   include ApplicationHelper
   def index

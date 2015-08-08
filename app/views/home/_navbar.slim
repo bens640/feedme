@@ -1,5 +1,5 @@
-nav.menu
-  = link_to 'Cookio', root_path
+/ nav.menu
+  / = link_to 'Cookio', root_path
   = render 'sessions/user_login'
   /.sidebar
   /  #hamburger
@@ -32,36 +32,87 @@ nav.menu
   /          == link_to 'Sign Out', logout_path
   /        li
   /          == link_to 'Mobile', home_mobile_path
-ul#menu-list
-  /li
-    /== link_to 'Mobile', home_mobile_path
-  -if is_admin?
-    li
-      => link_to 'admin', recipes_path
-    li
-      = link_to 'new recipe', new_recipe_path
-    li
-      = link_to 'Chefs', chefs_path
-  -if no_one_logged_in?
-    li
-      == link_to 'New User', new_user_path
-    li
-      == link_to 'New Chef', new_chef_path
-    li
-      == link_to 'Chef Login', login_chef_path
-    li
-      == link_to 'User Login', login_user_path
-  -if !is_admin? && current_user
-    li
-      == link_to 'New Reservation', reservations_new_path
-  -if current_chef
-    li
-      == link_to 'Reservations', reservations_path
-  -if someone_logged_in?
-    -if not is_admin?
+/ ul#menu-list
+/   /li
+/     /== link_to 'Mobile', home_mobile_path
+/   -if is_admin?
+/     li
+/       => link_to 'admin', recipes_path
+/     li
+/       = link_to 'new recipe', new_recipe_path
+/     li
+/       = link_to 'Chefs', chefs_path
+/   -if no_one_logged_in?
+/     li
+/       == link_to 'New User', new_user_path
+/     li
+/       == link_to 'New Chef', new_chef_path
+/     li
+/       == link_to 'Chef Login', login_chef_path
+/     li
+/       == link_to 'User Login', login_user_path
+/   -if !is_admin? && current_user
+/     li
+/       == link_to 'New Reservation', reservations_new_path
+/   -if current_chef
+/     li
+/       == link_to 'Reservations', reservations_path
+/   -if someone_logged_in?
+/     -if not is_admin?
+/       li
+/         == link_to 'My Account', (@chef || @user)
+/     li
+/       == link_to 'Sign Out', logout_path
+
+nav.top-bar data-topbar="" role="navigation" 
+  ul.title-area
+    li.name
+      h1
+        = link_to 'Cookio', root_path
+    /! Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+    li.toggle-topbar.menu-icon
+      a href="#" 
+        span Menu
+  section.top-bar-section
+    /! Right Nav Section
+    ul.right
+      -if is_admin?
+        li
+          => link_to 'admin', recipes_path
+        li
+          = link_to 'new recipe', new_recipe_path
+        li
+          = link_to 'Chefs', chefs_path
+      -if no_one_logged_in?
+        li
+          == link_to 'New User', new_user_path
+        li
+          == link_to 'New Chef', new_chef_path
+        li
+          == link_to 'Chef Login', login_chef_path
+        li
+          == link_to 'User Login', login_user_path
+      -if !is_admin? && current_user
+        li
+          == link_to 'New Reservation', reservations_new_path
+      -if current_chef
+        li
+          == link_to 'Reservations', reservations_path
+      -if someone_logged_in?
+        -if not is_admin?
+          li
+            == link_to 'My Account', (@chef || @user)
+        li
+          == link_to 'Sign Out', logout_path
+    /! Left Nav Section
+    ul.left
       li
-        == link_to 'My Account', (@chef || @user)
-    li
-      == link_to 'Sign Out', logout_path
+        a href="#"  Left Nav Button
+ 
+
+
+
+
+
 span
   = notice
